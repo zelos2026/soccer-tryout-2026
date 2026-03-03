@@ -29,6 +29,42 @@
       line-height: 1.7;
     }
 
+    /* ===== Language Toggle ===== */
+    .lang-toggle {
+      position: fixed;
+      top: 1.2rem;
+      right: 1.5rem;
+      z-index: 100;
+      display: flex;
+      background: rgba(17, 29, 51, 0.85);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--card-border);
+      border-radius: 50px;
+      overflow: hidden;
+    }
+
+    .lang-toggle button {
+      padding: 0.45rem 1rem;
+      font-size: 0.8rem;
+      font-weight: 700;
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-family: inherit;
+      letter-spacing: 0.05em;
+    }
+
+    .lang-toggle button.active {
+      background: var(--accent);
+      color: var(--primary);
+    }
+
+    .lang-toggle button:hover:not(.active) {
+      color: var(--text);
+    }
+
     /* ===== Hero Section ===== */
     .hero {
       position: relative;
@@ -385,19 +421,30 @@
       .timeline-item {
         gap: 1rem;
       }
+
+      .lang-toggle {
+        top: 0.8rem;
+        right: 0.8rem;
+      }
     }
   </style>
 </head>
 <body>
 
+  <!-- ===== Language Toggle ===== -->
+  <div class="lang-toggle">
+    <button id="btn-ja" class="active" onclick="switchLang('ja')">JP</button>
+    <button id="btn-en" onclick="switchLang('en')">EN</button>
+  </div>
+
   <!-- ===== Hero ===== -->
   <section class="hero">
     <div class="hero-content">
       <div class="hero-badge">Official Tryout 2026</div>
-      <h1>海外プロサッカー<br><span class="gold">トライアウト</span></h1>
-      <p class="hero-subtitle">東南アジア＆ヨーロッパ。2つの大陸への扉が、ここで開く。</p>
-      <p class="hero-date"><span>2026.4.3</span> FRI ／ 水元スポーツセンター</p>
-      <a href="https://form.run/@taqmau-sWv6tqPIdsUisJaRMIvn" target="_blank" rel="noopener" class="btn-primary">参加申込みはこちら</a>
+      <h1 data-ja="海外プロサッカー<br><span class='gold'>トライアウト</span>" data-en="Pro Football<br><span class='gold'>Tryout</span>"></h1>
+      <p class="hero-subtitle" data-ja="東南アジア＆ヨーロッパ。2つの大陸への扉が、ここで開く。" data-en="Southeast Asia & Europe. The door to two continents opens here."></p>
+      <p class="hero-date"><span>2026.4.3</span> FRI ／ <span data-ja="水元スポーツセンター" data-en="Mizumoto Sports Center"></span></p>
+      <a href="https://form.run/@taqmau-sWv6tqPIdsUisJaRMIvn" target="_blank" rel="noopener" class="btn-primary" data-ja="参加申込みはこちら" data-en="Apply Now"></a>
     </div>
     <div class="scroll-indicator">
       <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -410,15 +457,11 @@
   <section class="about" id="about">
     <div class="container">
       <p class="section-title">ABOUT</p>
-      <p class="section-subtitle">トライアウトについて</p>
+      <p class="section-subtitle" data-ja="トライアウトについて" data-en="About the Tryout"></p>
       <div class="section-line"></div>
-      <p class="about-text">
-        ラオス1部リーグのクラブ関係者2名に加え、<br>
-        ボスニア・ヘルツェゴビナの名門<strong>FKサラエボ</strong>の代理人が来日。<br>
-        東南アジアとヨーロッパ、2つのルートで海外プロ契約を目指せるトライアウトです。
-      </p>
+      <p class="about-text" data-ja="ラオス1部リーグのクラブ関係者2名に加え、<br>ボスニア・ヘルツェゴビナの名門<strong>FKサラエボ</strong>の代理人が来日。<br>東南アジアとヨーロッパ、2つのルートで海外プロ契約を目指せるトライアウトです。" data-en="Two representatives from a Lao Premier League club and an agent from <strong>FK Sarajevo</strong> (Bosnia and Herzegovina) will be in Japan.<br>This tryout offers two routes to a professional contract — Southeast Asia and Europe."></p>
       <div class="highlight-box">
-        <p>ラオス1部リーグ関係者 2名 ＋ FKサラエボ代理人 来日・選考</p>
+        <p data-ja="ラオス1部リーグ関係者 2名 ＋ FKサラエボ代理人 来日・選考" data-en="2 Lao Premier League Officials + FK Sarajevo Agent — Live Scouting"></p>
       </div>
     </div>
   </section>
@@ -427,49 +470,49 @@
   <section class="details" id="details">
     <div class="container">
       <p class="section-title">DETAILS</p>
-      <p class="section-subtitle">開催概要</p>
+      <p class="section-subtitle" data-ja="開催概要" data-en="Event Overview"></p>
       <div class="section-line"></div>
       <div class="details-grid">
         <div class="detail-card">
           <div class="icon">📅</div>
           <h3>Date</h3>
-          <p>2026年4月3日（金）</p>
+          <p data-ja="2026年4月3日（金）" data-en="Friday, April 3, 2026"></p>
         </div>
         <div class="detail-card">
           <div class="icon">⏰</div>
           <h3>Time</h3>
           <p>11:30 〜 16:00</p>
-          <p class="sub">受付開始 11:30</p>
+          <p class="sub" data-ja="受付開始 11:30" data-en="Registration opens at 11:30"></p>
         </div>
         <div class="detail-card">
           <div class="icon">📍</div>
           <h3>Venue</h3>
-          <p>水元スポーツセンター</p>
-          <p class="sub">東京都葛飾区</p>
+          <p data-ja="水元スポーツセンター" data-en="Mizumoto Sports Center"></p>
+          <p class="sub" data-ja="東京都葛飾区" data-en="Katsushika, Tokyo"></p>
         </div>
         <div class="detail-card">
           <div class="icon">🎯</div>
           <h3>Target</h3>
-          <p>18歳 〜 26歳</p>
-          <p class="sub">男性・経験者</p>
+          <p data-ja="18歳 〜 26歳" data-en="Ages 18 – 26"></p>
+          <p class="sub" data-ja="男性・経験者" data-en="Male / Experienced Players"></p>
         </div>
         <div class="detail-card">
           <div class="icon">🌏</div>
           <h3>Destination</h3>
-          <p>東南アジア ＆ ヨーロッパ</p>
-          <p class="sub">ラオス1部 / FKサラエボ（ボスニア）</p>
+          <p data-ja="東南アジア ＆ ヨーロッパ" data-en="Southeast Asia & Europe"></p>
+          <p class="sub" data-ja="ラオス1部 / FKサラエボ（ボスニア）" data-en="Lao Premier League / FK Sarajevo (Bosnia)"></p>
         </div>
         <div class="detail-card">
           <div class="icon">💰</div>
           <h3>Fee</h3>
-          <p>3,000円</p>
-          <p class="sub">当日現金払い</p>
+          <p data-ja="3,000円" data-en="¥3,000"></p>
+          <p class="sub" data-ja="当日現金払い" data-en="Cash payment on the day"></p>
         </div>
         <div class="detail-card">
           <div class="icon">👥</div>
           <h3>Staff</h3>
-          <p>ラオス1部リーグ関係者 2名</p>
-          <p class="sub">＋ FKサラエボ代理人</p>
+          <p data-ja="ラオス1部リーグ関係者 2名" data-en="2 Lao Premier League Officials"></p>
+          <p class="sub" data-ja="＋ FKサラエボ代理人" data-en="+ FK Sarajevo Agent"></p>
         </div>
       </div>
     </div>
@@ -479,39 +522,39 @@
   <section class="schedule" id="schedule">
     <div class="container">
       <p class="section-title">SCHEDULE</p>
-      <p class="section-subtitle">当日のタイムスケジュール</p>
+      <p class="section-subtitle" data-ja="当日のタイムスケジュール" data-en="Event Timetable"></p>
       <div class="section-line"></div>
       <div class="timeline">
         <div class="timeline-item">
           <div class="timeline-time">11:30</div>
           <div class="timeline-dot"></div>
           <div class="timeline-content">
-            <h3>受付開始</h3>
-            <p>会場にて受付・参加費のお支払い</p>
+            <h3 data-ja="受付開始" data-en="Registration"></h3>
+            <p data-ja="会場にて受付・参加費のお支払い" data-en="Check-in and fee payment at the venue"></p>
           </div>
         </div>
         <div class="timeline-item">
           <div class="timeline-time">12:00</div>
           <div class="timeline-dot"></div>
           <div class="timeline-content">
-            <h3>ウォーミングアップ</h3>
-            <p>全体でのアップ・ストレッチ</p>
+            <h3 data-ja="ウォーミングアップ" data-en="Warm-Up"></h3>
+            <p data-ja="全体でのアップ・ストレッチ" data-en="Group warm-up and stretching"></p>
           </div>
         </div>
         <div class="timeline-item">
           <div class="timeline-time">12:30</div>
           <div class="timeline-dot"></div>
           <div class="timeline-content">
-            <h3>ゲーム形式の技術テスト</h3>
-            <p>実戦形式でのプレー評価</p>
+            <h3 data-ja="ゲーム形式の技術テスト" data-en="Game-Based Skill Assessment"></h3>
+            <p data-ja="実戦形式でのプレー評価" data-en="Performance evaluation in match format"></p>
           </div>
         </div>
         <div class="timeline-item">
           <div class="timeline-time">15:30</div>
           <div class="timeline-dot"></div>
           <div class="timeline-content">
-            <h3>閉会式</h3>
-            <p>結果は後日メールにてご連絡</p>
+            <h3 data-ja="閉会式" data-en="Closing Ceremony"></h3>
+            <p data-ja="結果は後日メールにてご連絡" data-en="Results will be sent via email"></p>
           </div>
         </div>
       </div>
@@ -522,22 +565,47 @@
   <section class="apply" id="apply">
     <div class="container">
       <p class="section-title">ENTRY</p>
-      <p class="section-subtitle">参加申込み</p>
+      <p class="section-subtitle" data-ja="参加申込み" data-en="Registration"></p>
       <div class="section-line"></div>
       <div class="apply-box">
-        <p class="apply-lead">トライアウトへの参加を希望される方は、<br>下記ボタンより申込みフォームにお進みください。</p>
-        <a href="https://form.run/@taqmau-sWv6tqPIdsUisJaRMIvn" target="_blank" rel="noopener" class="btn-primary btn-apply">申込みフォームを開く</a>
-        <p class="apply-note">※ 外部サイト（form.run）に移動します</p>
+        <p class="apply-lead" data-ja="トライアウトへの参加を希望される方は、<br>下記ボタンより申込みフォームにお進みください。" data-en="To apply for the tryout,<br>please click the button below to access the registration form."></p>
+        <a href="https://form.run/@taqmau-sWv6tqPIdsUisJaRMIvn" target="_blank" rel="noopener" class="btn-primary btn-apply" data-ja="申込みフォームを開く" data-en="Open Registration Form"></a>
+        <p class="apply-note" data-ja="※ 外部サイト（form.run）に移動します" data-en="* You will be redirected to an external site (form.run)"></p>
       </div>
     </div>
   </section>
 
   <!-- ===== Footer ===== -->
   <footer>
-    <p>&copy; 2026 海外プロサッカー トライアウト実行委員会. All rights reserved.</p>
+    <p data-ja="&copy; 2026 海外プロサッカー トライアウト実行委員会. All rights reserved." data-en="&copy; 2026 International Pro Football Tryout Committee. All rights reserved."></p>
   </footer>
 
   <script>
+    // Initialize language
+    let currentLang = 'ja';
+
+    function switchLang(lang) {
+      currentLang = lang;
+      document.documentElement.lang = lang;
+
+      // Update toggle buttons
+      document.getElementById('btn-ja').classList.toggle('active', lang === 'ja');
+      document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+
+      // Update all translatable elements
+      document.querySelectorAll('[data-ja][data-en]').forEach(el => {
+        el.innerHTML = el.getAttribute('data-' + lang);
+      });
+
+      // Update page title
+      document.title = lang === 'ja'
+        ? '海外プロサッカー トライアウト 2026 | 東南アジア＆ヨーロッパ | 4月3日開催'
+        : 'International Pro Football Tryout 2026 | Southeast Asia & Europe | April 3';
+    }
+
+    // Set initial content
+    switchLang('ja');
+
     // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
