@@ -4,6 +4,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>海外プロサッカー トライアウト 2026 | 東南アジア＆ヨーロッパ | 4月3日開催</title>
+
+  <!-- OGP Meta Tags -->
+  <meta property="og:title" content="海外プロサッカー トライアウト 2026">
+  <meta property="og:description" content="ラオス1部リーグ＆FKサラエボ。東南アジアとヨーロッパ、2つのルートで海外プロ契約を目指せるトライアウト。2026年4月3日 水元スポーツセンターにて開催。">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://zelos2026.github.io/soccer-tryout-2026/">
+  <meta property="og:site_name" content="海外プロサッカー トライアウト 2026">
+  <meta property="og:locale" content="ja_JP">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="海外プロサッカー トライアウト 2026">
+  <meta name="twitter:description" content="ラオス1部リーグ＆FKサラエボ。2026年4月3日 水元スポーツセンターにて開催。">
+  <!-- General Meta -->
+  <meta name="description" content="ラオス1部リーグ＆FKサラエボ。東南アジアとヨーロッパ、2つのルートで海外プロ契約を目指せるトライアウト。2026年4月3日開催。">
+
   <style>
     * {
       margin: 0;
@@ -19,7 +34,10 @@
       --text-muted: #a0a8b8;
       --card-bg: #111d33;
       --card-border: #1e2d47;
-      --success: #2ecc71;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
@@ -27,6 +45,59 @@
       background-color: var(--primary);
       color: var(--text);
       line-height: 1.7;
+    }
+
+    /* ===== Navbar ===== */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 99;
+      background: rgba(10, 22, 40, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--card-border);
+      transform: translateY(-100%);
+      transition: transform 0.4s ease;
+    }
+
+    .navbar.visible {
+      transform: translateY(0);
+    }
+
+    .navbar-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.7rem 1.5rem;
+    }
+
+    .navbar-brand {
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: var(--accent);
+      letter-spacing: 0.05em;
+    }
+
+    .navbar-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .navbar-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      transition: color 0.3s;
+    }
+
+    .navbar-links a:hover {
+      color: var(--accent);
     }
 
     /* ===== Language Toggle ===== */
@@ -41,6 +112,11 @@
       border: 1px solid var(--card-border);
       border-radius: 50px;
       overflow: hidden;
+      transition: top 0.4s ease;
+    }
+
+    .lang-toggle.with-navbar {
+      top: 3.8rem;
     }
 
     .lang-toggle button {
@@ -73,23 +149,14 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      background: linear-gradient(
-        135deg,
-        #0a1628 0%,
-        #0f2240 40%,
-        #162d50 60%,
-        #0a1628 100%
-      );
+      background: linear-gradient(135deg, #0a1628 0%, #0f2240 40%, #162d50 60%, #0a1628 100%);
       overflow: hidden;
     }
 
     .hero::before {
       content: '';
       position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
+      inset: 0;
       background:
         radial-gradient(ellipse at 20% 50%, rgba(200, 169, 78, 0.08) 0%, transparent 60%),
         radial-gradient(ellipse at 80% 50%, rgba(200, 169, 78, 0.05) 0%, transparent 60%);
@@ -125,26 +192,50 @@
       letter-spacing: -0.02em;
     }
 
-    .hero h1 .gold {
-      color: var(--accent);
-    }
+    .hero h1 .gold { color: var(--accent); }
 
     .hero-subtitle {
       font-size: clamp(1rem, 2.5vw, 1.3rem);
       color: var(--text-muted);
-      margin-bottom: 2rem;
+      margin-bottom: 1.5rem;
       font-weight: 400;
     }
 
     .hero-date {
       font-size: clamp(1.2rem, 3vw, 1.6rem);
       font-weight: 700;
-      margin-bottom: 2.5rem;
+      margin-bottom: 1rem;
       color: var(--text);
     }
 
-    .hero-date span {
+    .hero-date span { color: var(--accent); }
+
+    /* Countdown */
+    .countdown {
+      display: flex;
+      justify-content: center;
+      gap: 1.2rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .countdown-item {
+      text-align: center;
+    }
+
+    .countdown-num {
+      display: block;
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      font-weight: 800;
       color: var(--accent);
+      line-height: 1;
+    }
+
+    .countdown-label {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-top: 0.3rem;
     }
 
     .btn-primary {
@@ -189,9 +280,7 @@
     }
 
     /* ===== Section Common ===== */
-    section {
-      padding: 5rem 1.5rem;
-    }
+    section { padding: 5rem 1.5rem; }
 
     .container {
       max-width: 960px;
@@ -203,7 +292,6 @@
       font-weight: 800;
       text-align: center;
       margin-bottom: 0.6rem;
-      letter-spacing: -0.01em;
     }
 
     .section-subtitle {
@@ -219,6 +307,18 @@
       background: var(--accent);
       margin: 0 auto 3rem;
       border-radius: 2px;
+    }
+
+    /* ===== Scroll Animation ===== */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     /* ===== About Section ===== */
@@ -253,9 +353,7 @@
     }
 
     /* ===== Details Section ===== */
-    .details {
-      background: #0d1e35;
-    }
+    .details { background: #0d1e35; }
 
     .details-grid {
       display: grid;
@@ -285,10 +383,7 @@
       font-weight: 600;
     }
 
-    .detail-card p {
-      font-size: 1.15rem;
-      font-weight: 700;
-    }
+    .detail-card p { font-size: 1.15rem; font-weight: 700; }
 
     .detail-card .sub {
       font-size: 0.9rem;
@@ -302,11 +397,7 @@
       background: linear-gradient(180deg, #0d1e35 0%, var(--primary) 100%);
     }
 
-    .timeline {
-      max-width: 600px;
-      margin: 0 auto;
-      position: relative;
-    }
+    .timeline { max-width: 600px; margin: 0 auto; position: relative; }
 
     .timeline::before {
       content: '';
@@ -345,21 +436,111 @@
       z-index: 1;
     }
 
-    .timeline-content h3 {
-      font-size: 1.05rem;
-      font-weight: 700;
-      margin-bottom: 0.2rem;
+    .timeline-content h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.2rem; }
+    .timeline-content p { font-size: 0.9rem; color: var(--text-muted); }
+
+    /* ===== Bring Section ===== */
+    .bring { background: var(--primary); }
+
+    .bring-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto;
     }
 
-    .timeline-content p {
-      font-size: 0.9rem;
+    .bring-item {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      padding: 1.2rem 1.5rem;
+      text-align: center;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    /* ===== Map Section ===== */
+    .map-section { background: #0d1e35; }
+
+    .map-wrapper {
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--card-border);
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .map-wrapper iframe {
+      width: 100%;
+      height: 350px;
+      border: 0;
+    }
+
+    /* ===== FAQ Section ===== */
+    .faq { background: linear-gradient(180deg, #0d1e35 0%, var(--primary) 100%); }
+
+    .faq-list {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .faq-item {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      margin-bottom: 1rem;
+      overflow: hidden;
+    }
+
+    .faq-question {
+      width: 100%;
+      padding: 1.2rem 1.5rem;
+      background: transparent;
+      border: none;
+      color: var(--text);
+      font-size: 1rem;
+      font-weight: 700;
+      font-family: inherit;
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: color 0.3s;
+    }
+
+    .faq-question:hover { color: var(--accent); }
+
+    .faq-question .arrow {
+      font-size: 0.8rem;
+      transition: transform 0.3s;
+      color: var(--accent);
+    }
+
+    .faq-item.open .faq-question .arrow {
+      transform: rotate(180deg);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.4s ease;
+    }
+
+    .faq-item.open .faq-answer {
+      max-height: 200px;
+    }
+
+    .faq-answer-inner {
+      padding: 0 1.5rem 1.2rem;
+      font-size: 0.95rem;
       color: var(--text-muted);
+      line-height: 1.8;
     }
 
     /* ===== Apply Section ===== */
-    .apply {
-      background: var(--primary);
-    }
+    .apply { background: var(--primary); }
 
     .apply-box {
       background: var(--card-bg);
@@ -378,10 +559,7 @@
       margin-bottom: 2rem;
     }
 
-    .btn-apply {
-      padding: 1.1rem 3rem;
-      font-size: 1.1rem;
-    }
+    .btn-apply { padding: 1.1rem 3rem; font-size: 1.1rem; }
 
     .apply-note {
       font-size: 0.8rem;
@@ -389,6 +567,41 @@
       margin-top: 1.2rem;
       opacity: 0.7;
     }
+
+    /* ===== SNS Share ===== */
+    .share-section {
+      background: #0d1e35;
+      padding: 3rem 1.5rem;
+    }
+
+    .share-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .share-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.7rem 1.5rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 700;
+      transition: all 0.3s ease;
+      border: 1px solid var(--card-border);
+    }
+
+    .share-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+
+    .share-btn.x { background: #000; color: #fff; }
+    .share-btn.line { background: #06C755; color: #fff; border-color: #06C755; }
+    .share-btn.facebook { background: #1877F2; color: #fff; border-color: #1877F2; }
 
     /* ===== Footer ===== */
     footer {
@@ -401,45 +614,47 @@
 
     /* ===== Responsive ===== */
     @media (max-width: 600px) {
-      section {
-        padding: 3.5rem 1.2rem;
-      }
+      section { padding: 3.5rem 1.2rem; }
+      .apply-box { padding: 2.5rem 1.5rem; }
+      .details-grid { grid-template-columns: 1fr; }
+      .timeline-item { gap: 1rem; }
+      .countdown { gap: 0.8rem; }
+      .bring-grid { grid-template-columns: 1fr 1fr; }
 
-      .apply-box {
-        padding: 2.5rem 1.5rem;
-      }
+      .lang-toggle { top: 0.8rem; right: 0.8rem; }
+      .lang-toggle.with-navbar { top: 3.5rem; }
+      .lang-toggle button { padding: 0.4rem 0.7rem; font-size: 0.75rem; }
 
-      .details-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .timeline-item {
-        gap: 1rem;
-      }
-
-      .lang-toggle {
-        top: 0.8rem;
-        right: 0.8rem;
-      }
-
-      .lang-toggle button {
-        padding: 0.4rem 0.7rem;
-        font-size: 0.75rem;
-      }
+      .navbar-links { gap: 0.8rem; }
+      .navbar-links a { font-size: 0.7rem; }
+      .navbar-brand { font-size: 0.75rem; }
     }
   </style>
 </head>
 <body>
 
+  <!-- ===== Navbar ===== -->
+  <nav class="navbar" id="navbar">
+    <div class="navbar-inner">
+      <div class="navbar-brand">TRYOUT 2026</div>
+      <ul class="navbar-links">
+        <li><a href="#about">ABOUT</a></li>
+        <li><a href="#details">DETAILS</a></li>
+        <li><a href="#schedule">SCHEDULE</a></li>
+        <li><a href="#apply">ENTRY</a></li>
+      </ul>
+    </div>
+  </nav>
+
   <!-- ===== Language Toggle ===== -->
-  <div class="lang-toggle">
+  <div class="lang-toggle" id="langToggle">
     <button id="btn-ja" class="active" onclick="switchLang('ja')">JP</button>
     <button id="btn-en" onclick="switchLang('en')">EN</button>
     <button id="btn-lo" onclick="switchLang('lo')">LO</button>
   </div>
 
   <!-- ===== Hero ===== -->
-  <section class="hero">
+  <section class="hero" id="hero">
     <div class="hero-content">
       <div class="hero-badge">Official Tryout 2026</div>
       <h1
@@ -457,10 +672,37 @@
         data-en="Mizumoto Sports Center"
         data-lo="ສູນກິລາ Mizumoto"
       ></span></p>
+
+      <!-- Countdown Timer -->
+      <div class="countdown" id="countdown">
+        <div class="countdown-item">
+          <span class="countdown-num" id="cd-days">--</span>
+          <span class="countdown-label"
+            data-ja="日" data-en="Days" data-lo="ມື້"
+          ></span>
+        </div>
+        <div class="countdown-item">
+          <span class="countdown-num" id="cd-hours">--</span>
+          <span class="countdown-label"
+            data-ja="時間" data-en="Hours" data-lo="ຊົ່ວໂມງ"
+          ></span>
+        </div>
+        <div class="countdown-item">
+          <span class="countdown-num" id="cd-mins">--</span>
+          <span class="countdown-label"
+            data-ja="分" data-en="Min" data-lo="ນາທີ"
+          ></span>
+        </div>
+        <div class="countdown-item">
+          <span class="countdown-num" id="cd-secs">--</span>
+          <span class="countdown-label"
+            data-ja="秒" data-en="Sec" data-lo="ວິນາທີ"
+          ></span>
+        </div>
+      </div>
+
       <a href="https://form.run/@taqmau-sWv6tqPIdsUisJaRMIvn" target="_blank" rel="noopener" class="btn-primary"
-        data-ja="参加申込みはこちら"
-        data-en="Apply Now"
-        data-lo="ສະໝັກດຽວນີ້"
+        data-ja="参加申込みはこちら" data-en="Apply Now" data-lo="ສະໝັກດຽວນີ້"
       ></a>
     </div>
     <div class="scroll-indicator">
@@ -472,12 +714,10 @@
 
   <!-- ===== About ===== -->
   <section class="about" id="about">
-    <div class="container">
+    <div class="container fade-in">
       <p class="section-title">ABOUT</p>
       <p class="section-subtitle"
-        data-ja="トライアウトについて"
-        data-en="About the Tryout"
-        data-lo="ກ່ຽວກັບການທົດສອບ"
+        data-ja="トライアウトについて" data-en="About the Tryout" data-lo="ກ່ຽວກັບການທົດສອບ"
       ></p>
       <div class="section-line"></div>
       <p class="about-text"
@@ -497,96 +737,46 @@
 
   <!-- ===== Details ===== -->
   <section class="details" id="details">
-    <div class="container">
+    <div class="container fade-in">
       <p class="section-title">DETAILS</p>
       <p class="section-subtitle"
-        data-ja="開催概要"
-        data-en="Event Overview"
-        data-lo="ລາຍລະອຽດງານ"
+        data-ja="開催概要" data-en="Event Overview" data-lo="ລາຍລະອຽດງານ"
       ></p>
       <div class="section-line"></div>
       <div class="details-grid">
         <div class="detail-card">
           <h3>Date</h3>
-          <p
-            data-ja="2026年4月3日（金）"
-            data-en="Friday, April 3, 2026"
-            data-lo="ວັນສຸກ, 3 ເມສາ 2026"
-          ></p>
+          <p data-ja="2026年4月3日（金）" data-en="Friday, April 3, 2026" data-lo="ວັນສຸກ, 3 ເມສາ 2026"></p>
         </div>
         <div class="detail-card">
           <h3>Time</h3>
           <p>11:30 〜 16:00</p>
-          <p class="sub"
-            data-ja="受付開始 11:30"
-            data-en="Registration opens at 11:30"
-            data-lo="ເລີ່ມລົງທະບຽນ 11:30"
-          ></p>
+          <p class="sub" data-ja="受付開始 11:30" data-en="Registration opens at 11:30" data-lo="ເລີ່ມລົງທະບຽນ 11:30"></p>
         </div>
         <div class="detail-card">
           <h3>Venue</h3>
-          <p
-            data-ja="水元スポーツセンター"
-            data-en="Mizumoto Sports Center"
-            data-lo="ສູນກິລາ Mizumoto"
-          ></p>
-          <p class="sub"
-            data-ja="東京都葛飾区"
-            data-en="Katsushika, Tokyo"
-            data-lo="Katsushika, ໂຕກຽວ"
-          ></p>
+          <p data-ja="水元スポーツセンター" data-en="Mizumoto Sports Center" data-lo="ສູນກິລາ Mizumoto"></p>
+          <p class="sub" data-ja="東京都葛飾区" data-en="Katsushika, Tokyo" data-lo="Katsushika, ໂຕກຽວ"></p>
         </div>
         <div class="detail-card">
           <h3>Target</h3>
-          <p
-            data-ja="18歳 〜 26歳"
-            data-en="Ages 18 – 26"
-            data-lo="ອາຍຸ 18 – 26 ປີ"
-          ></p>
-          <p class="sub"
-            data-ja="男性・経験者"
-            data-en="Male / Experienced Players"
-            data-lo="ຊາຍ / ນັກກິລາມີປະສົບການ"
-          ></p>
+          <p data-ja="18歳 〜 26歳" data-en="Ages 18 – 26" data-lo="ອາຍຸ 18 – 26 ປີ"></p>
+          <p class="sub" data-ja="男性・経験者" data-en="Male / Experienced Players" data-lo="ຊາຍ / ນັກກິລາມີປະສົບການ"></p>
         </div>
         <div class="detail-card">
           <h3>Destination</h3>
-          <p
-            data-ja="東南アジア ＆ ヨーロッパ"
-            data-en="Southeast Asia &amp; Europe"
-            data-lo="ອາຊີຕາເວັນອອກສຽງໃຕ້ ແລະ ຢູໂຣບ"
-          ></p>
-          <p class="sub"
-            data-ja="ラオス1部 / FKサラエボ（ボスニア）"
-            data-en="Lao Premier League / FK Sarajevo (Bosnia)"
-            data-lo="ລີກສູງສຸດລາວ / FK Sarajevo (ບອດສະເນຍ)"
-          ></p>
+          <p data-ja="東南アジア ＆ ヨーロッパ" data-en="Southeast Asia &amp; Europe" data-lo="ອາຊີຕາເວັນອອກສຽງໃຕ້ ແລະ ຢູໂຣບ"></p>
+          <p class="sub" data-ja="ラオス1部 / FKサラエボ（ボスニア）" data-en="Lao Premier League / FK Sarajevo (Bosnia)" data-lo="ລີກສູງສຸດລາວ / FK Sarajevo (ບອດສະເນຍ)"></p>
         </div>
         <div class="detail-card">
           <h3>Fee</h3>
-          <p
-            data-ja="3,000円"
-            data-en="¥3,000"
-            data-lo="3,000 ເຢັນ"
-          ></p>
-          <p class="sub"
-            data-ja="当日現金払い"
-            data-en="Cash payment on the day"
-            data-lo="ຈ່າຍເງິນສົດໃນມື້ງານ"
-          ></p>
+          <p data-ja="3,000円" data-en="¥3,000" data-lo="3,000 ເຢັນ"></p>
+          <p class="sub" data-ja="当日現金払い" data-en="Cash payment on the day" data-lo="ຈ່າຍເງິນສົດໃນມື້ງານ"></p>
         </div>
         <div class="detail-card">
           <h3>Staff</h3>
-          <p
-            data-ja="ラオス1部リーグ関係者 2名"
-            data-en="2 Lao Premier League Officials"
-            data-lo="ເຈົ້າໜ້າທີ່ລີກສູງສຸດລາວ 2 ທ່ານ"
-          ></p>
-          <p class="sub"
-            data-ja="＋ FKサラエボ代理人"
-            data-en="+ FK Sarajevo Agent"
-            data-lo="+ ຕົວແທນ FK Sarajevo"
-          ></p>
+          <p data-ja="ラオス1部リーグ関係者 2名" data-en="2 Lao Premier League Officials" data-lo="ເຈົ້າໜ້າທີ່ລີກສູງສຸດລາວ 2 ທ່ານ"></p>
+          <p class="sub" data-ja="＋ FKサラエボ代理人" data-en="+ FK Sarajevo Agent" data-lo="+ ຕົວແທນ FK Sarajevo"></p>
         </div>
       </div>
     </div>
@@ -594,12 +784,10 @@
 
   <!-- ===== Schedule ===== -->
   <section class="schedule" id="schedule">
-    <div class="container">
+    <div class="container fade-in">
       <p class="section-title">SCHEDULE</p>
       <p class="section-subtitle"
-        data-ja="当日のタイムスケジュール"
-        data-en="Event Timetable"
-        data-lo="ຕາຕະລາງເວລາ"
+        data-ja="当日のタイムスケジュール" data-en="Event Timetable" data-lo="ຕາຕະລາງເວລາ"
       ></p>
       <div class="section-line"></div>
       <div class="timeline">
@@ -607,64 +795,119 @@
           <div class="timeline-time">11:30</div>
           <div class="timeline-dot"></div>
           <div class="timeline-content">
-            <h3
-              data-ja="受付開始"
-              data-en="Registration"
-              data-lo="ລົງທະບຽນ"
-            ></h3>
-            <p
-              data-ja="会場にて受付・参加費のお支払い"
-              data-en="Check-in and fee payment at the venue"
-              data-lo="ລົງທະບຽນ ແລະ ຈ່າຍຄ່າເຂົ້າຮ່ວມທີ່ສະໜາມ"
-            ></p>
+            <h3 data-ja="受付開始" data-en="Registration" data-lo="ລົງທະບຽນ"></h3>
+            <p data-ja="会場にて受付・参加費のお支払い" data-en="Check-in and fee payment at the venue" data-lo="ລົງທະບຽນ ແລະ ຈ່າຍຄ່າເຂົ້າຮ່ວມທີ່ສະໜາມ"></p>
           </div>
         </div>
         <div class="timeline-item">
           <div class="timeline-time">12:00</div>
           <div class="timeline-dot"></div>
           <div class="timeline-content">
-            <h3
-              data-ja="ウォーミングアップ"
-              data-en="Warm-Up"
-              data-lo="ອົບອຸ່ນຮ່າງກາຍ"
-            ></h3>
-            <p
-              data-ja="全体でのアップ・ストレッチ"
-              data-en="Group warm-up and stretching"
-              data-lo="ອົບອຸ່ນຮ່າງກາຍ ແລະ ຍືດເສັ້ນເປັນກຸ່ມ"
-            ></p>
+            <h3 data-ja="ウォーミングアップ" data-en="Warm-Up" data-lo="ອົບອຸ່ນຮ່າງກາຍ"></h3>
+            <p data-ja="全体でのアップ・ストレッチ" data-en="Group warm-up and stretching" data-lo="ອົບອຸ່ນຮ່າງກາຍ ແລະ ຍືດເສັ້ນເປັນກຸ່ມ"></p>
           </div>
         </div>
         <div class="timeline-item">
           <div class="timeline-time">12:30</div>
           <div class="timeline-dot"></div>
           <div class="timeline-content">
-            <h3
-              data-ja="ゲーム形式の技術テスト"
-              data-en="Game-Based Skill Assessment"
-              data-lo="ການທົດສອບທັກສະແບບແຂ່ງຂັນ"
-            ></h3>
-            <p
-              data-ja="実戦形式でのプレー評価"
-              data-en="Performance evaluation in match format"
-              data-lo="ປະເມີນການຫຼິ້ນໃນຮູບແບບການແຂ່ງຂັນ"
-            ></p>
+            <h3 data-ja="ゲーム形式の技術テスト" data-en="Game-Based Skill Assessment" data-lo="ການທົດສອບທັກສະແບບແຂ່ງຂັນ"></h3>
+            <p data-ja="実戦形式でのプレー評価" data-en="Performance evaluation in match format" data-lo="ປະເມີນການຫຼິ້ນໃນຮູບແບບການແຂ່ງຂັນ"></p>
           </div>
         </div>
         <div class="timeline-item">
           <div class="timeline-time">15:30</div>
           <div class="timeline-dot"></div>
           <div class="timeline-content">
-            <h3
-              data-ja="閉会式"
-              data-en="Closing Ceremony"
-              data-lo="ພິທີປິດ"
-            ></h3>
-            <p
-              data-ja="結果は後日メールにてご連絡"
-              data-en="Results will be sent via email"
-              data-lo="ຜົນຈະແຈ້ງທາງອີເມວພາຍຫຼັງ"
-            ></p>
+            <h3 data-ja="閉会式" data-en="Closing Ceremony" data-lo="ພິທີປິດ"></h3>
+            <p data-ja="結果は後日メールにてご連絡" data-en="Results will be sent via email" data-lo="ຜົນຈະແຈ້ງທາງອີເມວພາຍຫຼັງ"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Bring ===== -->
+  <section class="bring" id="bring">
+    <div class="container fade-in">
+      <p class="section-title">BRING</p>
+      <p class="section-subtitle"
+        data-ja="当日の持ち物" data-en="What to Bring" data-lo="ສິ່ງທີ່ຕ້ອງນຳມາ"
+      ></p>
+      <div class="section-line"></div>
+      <div class="bring-grid">
+        <div class="bring-item" data-ja="サッカースパイク" data-en="Football Boots" data-lo="ເກີບຟຸດບານ"></div>
+        <div class="bring-item" data-ja="すね当て" data-en="Shin Guards" data-lo="ສະໜັບແຂ້ງ"></div>
+        <div class="bring-item" data-ja="運動着（上下）" data-en="Sportswear" data-lo="ຊຸດກິລາ"></div>
+        <div class="bring-item" data-ja="飲み物" data-en="Drinks" data-lo="ເຄື່ອງດື່ມ"></div>
+        <div class="bring-item" data-ja="タオル" data-en="Towel" data-lo="ຜ້າເຊັດໂຕ"></div>
+        <div class="bring-item" data-ja="着替え" data-en="Change of Clothes" data-lo="ເຄື່ອງປ່ຽນ"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Map ===== -->
+  <section class="map-section" id="map">
+    <div class="container fade-in">
+      <p class="section-title">ACCESS</p>
+      <p class="section-subtitle"
+        data-ja="会場アクセス" data-en="Venue Access" data-lo="ເສັ້ນທາງໄປສະໜາມ"
+      ></p>
+      <div class="section-line"></div>
+      <div class="map-wrapper">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3237.5!2d139.8675!3d35.7775!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x601889e2a4b0a00d%3A0x5c4e4a0b0e0c0a0b!2z5rC05YWD44K544Od44O844OE44K744Oz44K_44O8!5e0!3m2!1sja!2sjp!4v1700000000000!5m2!1sja!2sjp"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <section class="faq" id="faq">
+    <div class="container fade-in">
+      <p class="section-title">FAQ</p>
+      <p class="section-subtitle"
+        data-ja="よくある質問" data-en="Frequently Asked Questions" data-lo="ຄຳຖາມທີ່ພົບເລື້ອຍ"
+      ></p>
+      <div class="section-line"></div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span data-ja="雨天の場合はどうなりますか？" data-en="What happens if it rains?" data-lo="ຖ້າຝົນຕົກຈະເຮັດແນວໃດ?"></span>
+            <span class="arrow">▼</span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner" data-ja="雨天の場合も基本的に開催します。荒天により中止となる場合は、前日までにメールにてご連絡いたします。" data-en="The event will generally be held even in rainy conditions. In case of severe weather cancellation, we will notify you by email the day before." data-lo="ງານຈະຈັດຂຶ້ນເຖິງແມ່ນຝົນຕົກ. ຖ້າຍົກເລີກເນື່ອງຈາກສະພາບອາກາດຮ້າຍແຮງ, ຈະແຈ້ງທາງອີເມວລ່ວງໜ້າ 1 ມື້."></div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span data-ja="駐車場はありますか？" data-en="Is there parking available?" data-lo="ມີບ່ອນຈອດລົດບໍ?"></span>
+            <span class="arrow">▼</span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner" data-ja="水元スポーツセンターには駐車場がありますが、台数に限りがあります。公共交通機関のご利用をおすすめします。" data-en="Mizumoto Sports Center has parking, but spaces are limited. We recommend using public transportation." data-lo="ສູນກິລາ Mizumoto ມີບ່ອນຈອດລົດ ແຕ່ຈຳນວນຈຳກັດ. ແນະນຳໃຫ້ໃຊ້ການຂົນສົ່ງສາທາລະນະ."></div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span data-ja="当日キャンセルはできますか？" data-en="Can I cancel on the day?" data-lo="ຍົກເລີກໃນມື້ງານໄດ້ບໍ?"></span>
+            <span class="arrow">▼</span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner" data-ja="前日までのキャンセルは無料です。当日のキャンセル・無断欠席の場合、参加費の返金はできませんのでご了承ください。" data-en="Cancellation is free until the day before. Same-day cancellations or no-shows are non-refundable." data-lo="ການຍົກເລີກກ່ອນ 1 ມື້ແມ່ນບໍ່ເສຍຄ່າ. ການຍົກເລີກໃນມື້ງານ ຫຼື ບໍ່ມາ ຈະບໍ່ໄດ້ຮັບເງິນຄືນ."></div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span data-ja="経験が少なくても参加できますか？" data-en="Can I participate with limited experience?" data-lo="ປະສົບການໜ້ອຍກໍ່ເຂົ້າຮ່ວມໄດ້ບໍ?"></span>
+            <span class="arrow">▼</span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner" data-ja="サッカー経験者であれば参加可能です。プロ・アマチュアは問いません。海外でプレーしたいという強い意志を持った方のご参加をお待ちしています。" data-en="Anyone with football experience is welcome. Professional or amateur status does not matter. We look forward to players with a strong desire to play overseas." data-lo="ຜູ້ທີ່ມີປະສົບການຟຸດບານສາມາດເຂົ້າຮ່ວມໄດ້. ບໍ່ຈຳກັດລະດັບອາຊີບ ຫຼື ສະໝັກເລ່ນ. ພວກເຮົາລໍຖ້ານັກກິລາທີ່ມີຄວາມມຸ່ງໝັ້ນຢາກຫຼິ້ນຢູ່ຕ່າງປະເທດ."></div>
           </div>
         </div>
       </div>
@@ -673,12 +916,10 @@
 
   <!-- ===== Apply ===== -->
   <section class="apply" id="apply">
-    <div class="container">
+    <div class="container fade-in">
       <p class="section-title">ENTRY</p>
       <p class="section-subtitle"
-        data-ja="参加申込み"
-        data-en="Registration"
-        data-lo="ລົງທະບຽນເຂົ້າຮ່ວມ"
+        data-ja="参加申込み" data-en="Registration" data-lo="ລົງທະບຽນເຂົ້າຮ່ວມ"
       ></p>
       <div class="section-line"></div>
       <div class="apply-box">
@@ -688,15 +929,31 @@
           data-lo="ຖ້າທ່ານຕ້ອງການເຂົ້າຮ່ວມການທົດສອບ,<br>ກະລຸນາກົດປຸ່ມຂ້າງລຸ່ມເພື່ອເປີດແບບຟອມລົງທະບຽນ."
         ></p>
         <a href="https://form.run/@taqmau-sWv6tqPIdsUisJaRMIvn" target="_blank" rel="noopener" class="btn-primary btn-apply"
-          data-ja="申込みフォームを開く"
-          data-en="Open Registration Form"
-          data-lo="ເປີດແບບຟອມລົງທະບຽນ"
+          data-ja="申込みフォームを開く" data-en="Open Registration Form" data-lo="ເປີດແບບຟອມລົງທະບຽນ"
         ></a>
         <p class="apply-note"
           data-ja="※ 外部サイト（form.run）に移動します"
           data-en="* You will be redirected to an external site (form.run)"
           data-lo="* ຈະໄປຍັງເວັບໄຊພາຍນອກ (form.run)"
         ></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SNS Share ===== -->
+  <section class="share-section">
+    <div class="container fade-in">
+      <p class="section-title"
+        data-ja="SHARE" data-en="SHARE" data-lo="SHARE"
+      ></p>
+      <p class="section-subtitle"
+        data-ja="このトライアウトをシェアする" data-en="Share this tryout" data-lo="ແບ່ງປັນການທົດສອບນີ້"
+      ></p>
+      <div class="section-line"></div>
+      <div class="share-buttons">
+        <a class="share-btn x" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fzelos2026.github.io%2Fsoccer-tryout-2026%2F&text=%E6%B5%B7%E5%A4%96%E3%83%97%E3%83%AD%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC+%E3%83%88%E3%83%A9%E3%82%A4%E3%82%A2%E3%82%A6%E3%83%88+2026" target="_blank" rel="noopener">𝕏 Post</a>
+        <a class="share-btn line" href="https://social-plugins.line.me/lineit/share?url=https%3A%2F%2Fzelos2026.github.io%2Fsoccer-tryout-2026%2F" target="_blank" rel="noopener">LINE</a>
+        <a class="share-btn facebook" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fzelos2026.github.io%2Fsoccer-tryout-2026%2F" target="_blank" rel="noopener">Facebook</a>
       </div>
     </div>
   </section>
@@ -711,7 +968,7 @@
   </footer>
 
   <script>
-    // Initialize language
+    // ===== Language Switch =====
     let currentLang = 'ja';
     const langs = ['ja', 'en', 'lo'];
     const titles = {
@@ -723,36 +980,77 @@
     function switchLang(lang) {
       currentLang = lang;
       document.documentElement.lang = lang;
-
-      // Update toggle buttons
       langs.forEach(l => {
         document.getElementById('btn-' + l).classList.toggle('active', l === lang);
       });
-
-      // Update all translatable elements
       document.querySelectorAll('[data-' + lang + ']').forEach(el => {
         if (el.hasAttribute('data-ja') && el.hasAttribute('data-en') && el.hasAttribute('data-lo')) {
           el.innerHTML = el.getAttribute('data-' + lang);
         }
       });
-
-      // Update page title
       document.title = titles[lang];
     }
 
-    // Set initial content
     switchLang('ja');
 
-    // Smooth scroll for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    // ===== Countdown Timer =====
+    const eventDate = new Date('2026-04-03T11:30:00+09:00').getTime();
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const diff = eventDate - now;
+
+      if (diff <= 0) {
+        document.getElementById('countdown').style.display = 'none';
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const secs = Math.floor((diff % (1000 * 60)) / 1000);
+
+      document.getElementById('cd-days').textContent = days;
+      document.getElementById('cd-hours').textContent = String(hours).padStart(2, '0');
+      document.getElementById('cd-mins').textContent = String(mins).padStart(2, '0');
+      document.getElementById('cd-secs').textContent = String(secs).padStart(2, '0');
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    // ===== Navbar show on scroll =====
+    const navbar = document.getElementById('navbar');
+    const langToggle = document.getElementById('langToggle');
+    let lastScroll = 0;
+
+    window.addEventListener('scroll', () => {
+      const heroHeight = document.querySelector('.hero').offsetHeight;
+      if (window.scrollY > heroHeight * 0.7) {
+        navbar.classList.add('visible');
+        langToggle.classList.add('with-navbar');
+      } else {
+        navbar.classList.remove('visible');
+        langToggle.classList.remove('with-navbar');
+      }
+    });
+
+    // ===== Scroll Animation =====
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
         }
       });
-    });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // ===== FAQ Toggle =====
+    function toggleFaq(btn) {
+      const item = btn.closest('.faq-item');
+      item.classList.toggle('open');
+    }
   </script>
 
 </body>
