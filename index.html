@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>海外プロサッカー トライアウト 2026 | 東南アジア＆ヨーロッパ | 4月3日開催</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary: #0a1628;
+      --accent: #c8a94e;
+      --accent-hover: #dbbe5e;
+      --text: #f0f0f0;
+      --text-muted: #a0a8b8;
+      --card-bg: #111d33;
+      --card-border: #1e2d47;
+      --success: #2ecc71;
+    }
+
+    body {
+      font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+      background-color: var(--primary);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    /* ===== Hero Section ===== */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: linear-gradient(
+        135deg,
+        #0a1628 0%,
+        #0f2240 40%,
+        #162d50 60%,
+        #0a1628 100%
+      );
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background:
+        radial-gradient(ellipse at 20% 50%, rgba(200, 169, 78, 0.08) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 50%, rgba(200, 169, 78, 0.05) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      padding: 2rem;
+      max-width: 800px;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(200, 169, 78, 0.15);
+      border: 1px solid rgba(200, 169, 78, 0.3);
+      color: var(--accent);
+      padding: 0.4rem 1.2rem;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.2rem, 6vw, 4rem);
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.02em;
+    }
+
+    .hero h1 .gold {
+      color: var(--accent);
+    }
+
+    .hero-subtitle {
+      font-size: clamp(1rem, 2.5vw, 1.3rem);
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+      font-weight: 400;
+    }
+
+    .hero-date {
+      font-size: clamp(1.2rem, 3vw, 1.6rem);
+      font-weight: 700;
+      margin-bottom: 2.5rem;
+      color: var(--text);
+    }
+
+    .hero-date span {
+      color: var(--accent);
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--accent);
+      color: var(--primary);
+      padding: 1rem 2.5rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.05rem;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+      letter-spacing: 0.02em;
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(200, 169, 78, 0.25);
+    }
+
+    .scroll-indicator {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: bounce 2s infinite;
+    }
+
+    .scroll-indicator svg {
+      width: 28px;
+      height: 28px;
+      stroke: var(--text-muted);
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+      40% { transform: translateX(-50%) translateY(-8px); }
+      60% { transform: translateX(-50%) translateY(-4px); }
+    }
+
+    /* ===== Section Common ===== */
+    section {
+      padding: 5rem 1.5rem;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-size: 1.8rem;
+      font-weight: 800;
+      text-align: center;
+      margin-bottom: 0.6rem;
+      letter-spacing: -0.01em;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: var(--text-muted);
+      margin-bottom: 3rem;
+      font-size: 0.95rem;
+    }
+
+    .section-line {
+      width: 50px;
+      height: 3px;
+      background: var(--accent);
+      margin: 0 auto 3rem;
+      border-radius: 2px;
+    }
+
+    /* ===== About Section ===== */
+    .about {
+      background: linear-gradient(180deg, var(--primary) 0%, #0d1e35 100%);
+    }
+
+    .about-text {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 3rem;
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      line-height: 1.9;
+    }
+
+    .highlight-box {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-left: 4px solid var(--accent);
+      padding: 1.5rem 2rem;
+      border-radius: 0 8px 8px 0;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .highlight-box p {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--accent);
+      text-align: center;
+    }
+
+    /* ===== Details Section ===== */
+    .details {
+      background: #0d1e35;
+    }
+
+    .details-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .detail-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 2rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .detail-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .detail-card .icon {
+      font-size: 1.8rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .detail-card h3 {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.4rem;
+      font-weight: 600;
+    }
+
+    .detail-card p {
+      font-size: 1.15rem;
+      font-weight: 700;
+    }
+
+    .detail-card .sub {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      font-weight: 400;
+      margin-top: 0.3rem;
+    }
+
+    /* ===== Schedule Section ===== */
+    .schedule {
+      background: linear-gradient(180deg, #0d1e35 0%, var(--primary) 100%);
+    }
+
+    .timeline {
+      max-width: 600px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 24px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: var(--card-border);
+    }
+
+    .timeline-item {
+      display: flex;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+      position: relative;
+    }
+
+    .timeline-time {
+      min-width: 50px;
+      text-align: right;
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--accent);
+      padding-top: 0.1rem;
+    }
+
+    .timeline-dot {
+      width: 12px;
+      height: 12px;
+      background: var(--accent);
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 0.35rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .timeline-content h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 0.2rem;
+    }
+
+    .timeline-content p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    /* ===== Apply Section ===== */
+    .apply {
+      background: var(--primary);
+    }
+
+    .apply-box {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 3.5rem 2.5rem;
+      max-width: 560px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .apply-lead {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      line-height: 1.9;
+      margin-bottom: 2rem;
+    }
+
+    .btn-apply {
+      padding: 1.1rem 3rem;
+      font-size: 1.1rem;
+    }
+
+    .apply-note {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 1.2rem;
+      opacity: 0.7;
+    }
+
+    /* ===== Footer ===== */
+    footer {
+      text-align: center;
+      padding: 2.5rem 1.5rem;
+      border-top: 1px solid var(--card-border);
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 600px) {
+      section {
+        padding: 3.5rem 1.2rem;
+      }
+
+      .apply-box {
+        padding: 2.5rem 1.5rem;
+      }
+
+      .details-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .timeline-item {
+        gap: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== Hero ===== -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-badge">Official Tryout 2026</div>
+      <h1>海外プロサッカー<br><span class="gold">トライアウト</span></h1>
+      <p class="hero-subtitle">東南アジア＆ヨーロッパ。2つの大陸への扉が、ここで開く。</p>
+      <p class="hero-date"><span>2026.4.3</span> FRI ／ 水元スポーツセンター</p>
+      <a href="https://form.run/@taqmau-sWv6tqPIdsUisJaRMIvn" target="_blank" rel="noopener" class="btn-primary">参加申込みはこちら</a>
+    </div>
+    <div class="scroll-indicator">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="6 9 12 15 18 9"></polyline>
+      </svg>
+    </div>
+  </section>
+
+  <!-- ===== About ===== -->
+  <section class="about" id="about">
+    <div class="container">
+      <p class="section-title">ABOUT</p>
+      <p class="section-subtitle">トライアウトについて</p>
+      <div class="section-line"></div>
+      <p class="about-text">
+        ラオス1部リーグのクラブ関係者2名に加え、<br>
+        ボスニア・ヘルツェゴビナの名門<strong>FKサラエボ</strong>の代理人が来日。<br>
+        東南アジアとヨーロッパ、2つのルートで海外プロ契約を目指せるトライアウトです。
+      </p>
+      <div class="highlight-box">
+        <p>ラオス1部リーグ関係者 2名 ＋ FKサラエボ代理人 来日・選考</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Details ===== -->
+  <section class="details" id="details">
+    <div class="container">
+      <p class="section-title">DETAILS</p>
+      <p class="section-subtitle">開催概要</p>
+      <div class="section-line"></div>
+      <div class="details-grid">
+        <div class="detail-card">
+          <div class="icon">📅</div>
+          <h3>Date</h3>
+          <p>2026年4月3日（金）</p>
+        </div>
+        <div class="detail-card">
+          <div class="icon">⏰</div>
+          <h3>Time</h3>
+          <p>11:30 〜 16:00</p>
+          <p class="sub">受付開始 11:30</p>
+        </div>
+        <div class="detail-card">
+          <div class="icon">📍</div>
+          <h3>Venue</h3>
+          <p>水元スポーツセンター</p>
+          <p class="sub">東京都葛飾区</p>
+        </div>
+        <div class="detail-card">
+          <div class="icon">🎯</div>
+          <h3>Target</h3>
+          <p>18歳 〜 26歳</p>
+          <p class="sub">男性・経験者</p>
+        </div>
+        <div class="detail-card">
+          <div class="icon">🌏</div>
+          <h3>Destination</h3>
+          <p>東南アジア ＆ ヨーロッパ</p>
+          <p class="sub">ラオス1部 / FKサラエボ（ボスニア）</p>
+        </div>
+        <div class="detail-card">
+          <div class="icon">💰</div>
+          <h3>Fee</h3>
+          <p>3,000円</p>
+          <p class="sub">当日現金払い</p>
+        </div>
+        <div class="detail-card">
+          <div class="icon">👥</div>
+          <h3>Staff</h3>
+          <p>ラオス1部リーグ関係者 2名</p>
+          <p class="sub">＋ FKサラエボ代理人</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Schedule ===== -->
+  <section class="schedule" id="schedule">
+    <div class="container">
+      <p class="section-title">SCHEDULE</p>
+      <p class="section-subtitle">当日のタイムスケジュール</p>
+      <div class="section-line"></div>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-time">11:30</div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h3>受付開始</h3>
+            <p>会場にて受付・参加費のお支払い</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-time">12:00</div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h3>ウォーミングアップ</h3>
+            <p>全体でのアップ・ストレッチ</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-time">12:30</div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h3>ゲーム形式の技術テスト</h3>
+            <p>実戦形式でのプレー評価</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-time">15:30</div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h3>閉会式</h3>
+            <p>結果は後日メールにてご連絡</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Apply ===== -->
+  <section class="apply" id="apply">
+    <div class="container">
+      <p class="section-title">ENTRY</p>
+      <p class="section-subtitle">参加申込み</p>
+      <div class="section-line"></div>
+      <div class="apply-box">
+        <p class="apply-lead">トライアウトへの参加を希望される方は、<br>下記ボタンより申込みフォームにお進みください。</p>
+        <a href="https://form.run/@taqmau-sWv6tqPIdsUisJaRMIvn" target="_blank" rel="noopener" class="btn-primary btn-apply">申込みフォームを開く</a>
+        <p class="apply-note">※ 外部サイト（form.run）に移動します</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Footer ===== -->
+  <footer>
+    <p>&copy; 2026 海外プロサッカー トライアウト実行委員会. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
