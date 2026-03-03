@@ -44,7 +44,7 @@
     }
 
     .lang-toggle button {
-      padding: 0.45rem 1rem;
+      padding: 0.45rem 0.9rem;
       font-size: 0.8rem;
       font-weight: 700;
       border: none;
@@ -276,11 +276,6 @@
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     }
 
-    .detail-card .icon {
-      font-size: 1.8rem;
-      margin-bottom: 0.8rem;
-    }
-
     .detail-card h3 {
       font-size: 0.85rem;
       color: var(--text-muted);
@@ -426,6 +421,11 @@
         top: 0.8rem;
         right: 0.8rem;
       }
+
+      .lang-toggle button {
+        padding: 0.4rem 0.7rem;
+        font-size: 0.75rem;
+      }
     }
   </style>
 </head>
@@ -435,16 +435,33 @@
   <div class="lang-toggle">
     <button id="btn-ja" class="active" onclick="switchLang('ja')">JP</button>
     <button id="btn-en" onclick="switchLang('en')">EN</button>
+    <button id="btn-lo" onclick="switchLang('lo')">LO</button>
   </div>
 
   <!-- ===== Hero ===== -->
   <section class="hero">
     <div class="hero-content">
       <div class="hero-badge">Official Tryout 2026</div>
-      <h1 data-ja="海外プロサッカー<br><span class='gold'>トライアウト</span>" data-en="Pro Football<br><span class='gold'>Tryout</span>"></h1>
-      <p class="hero-subtitle" data-ja="東南アジア＆ヨーロッパ。2つの大陸への扉が、ここで開く。" data-en="Southeast Asia & Europe. The door to two continents opens here."></p>
-      <p class="hero-date"><span>2026.4.3</span> FRI ／ <span data-ja="水元スポーツセンター" data-en="Mizumoto Sports Center"></span></p>
-      <a href="https://form.run/@taqmau-sWv6tqPIdsUisJaRMIvn" target="_blank" rel="noopener" class="btn-primary" data-ja="参加申込みはこちら" data-en="Apply Now"></a>
+      <h1
+        data-ja="海外プロサッカー<br><span class='gold'>トライアウト</span>"
+        data-en="Pro Football<br><span class='gold'>Tryout</span>"
+        data-lo="ທົດສອບຟຸດບານ<br><span class='gold'>ອາຊີບ</span>"
+      ></h1>
+      <p class="hero-subtitle"
+        data-ja="東南アジア＆ヨーロッパ。2つの大陸への扉が、ここで開く。"
+        data-en="Southeast Asia &amp; Europe. The door to two continents opens here."
+        data-lo="ອາຊີຕາເວັນອອກສຽງໃຕ້ ແລະ ຢູໂຣບ. ປະຕູສູ່ 2 ທະວີບ ເປີດຢູ່ບ່ອນນີ້."
+      ></p>
+      <p class="hero-date"><span>2026.4.3</span> FRI ／ <span
+        data-ja="水元スポーツセンター"
+        data-en="Mizumoto Sports Center"
+        data-lo="ສູນກິລາ Mizumoto"
+      ></span></p>
+      <a href="https://form.run/@taqmau-sWv6tqPIdsUisJaRMIvn" target="_blank" rel="noopener" class="btn-primary"
+        data-ja="参加申込みはこちら"
+        data-en="Apply Now"
+        data-lo="ສະໝັກດຽວນີ້"
+      ></a>
     </div>
     <div class="scroll-indicator">
       <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -457,11 +474,23 @@
   <section class="about" id="about">
     <div class="container">
       <p class="section-title">ABOUT</p>
-      <p class="section-subtitle" data-ja="トライアウトについて" data-en="About the Tryout"></p>
+      <p class="section-subtitle"
+        data-ja="トライアウトについて"
+        data-en="About the Tryout"
+        data-lo="ກ່ຽວກັບການທົດສອບ"
+      ></p>
       <div class="section-line"></div>
-      <p class="about-text" data-ja="ラオス1部リーグのクラブ関係者2名に加え、<br>ボスニア・ヘルツェゴビナの名門<strong>FKサラエボ</strong>の代理人が来日。<br>東南アジアとヨーロッパ、2つのルートで海外プロ契約を目指せるトライアウトです。" data-en="Two representatives from a Lao Premier League club and an agent from <strong>FK Sarajevo</strong> (Bosnia and Herzegovina) will be in Japan.<br>This tryout offers two routes to a professional contract — Southeast Asia and Europe."></p>
+      <p class="about-text"
+        data-ja="ラオス1部リーグのクラブ関係者2名に加え、<br>ボスニア・ヘルツェゴビナの名門<strong>FKサラエボ</strong>の代理人が来日。<br>東南アジアとヨーロッパ、2つのルートで海外プロ契約を目指せるトライアウトです。"
+        data-en="Two representatives from a Lao Premier League club and an agent from <strong>FK Sarajevo</strong> (Bosnia and Herzegovina) will be in Japan.<br>This tryout offers two routes to a professional contract — Southeast Asia and Europe."
+        data-lo="ຜູ້ຕາງໜ້າ 2 ທ່ານ ຈາກສະໂມສອນລີກສູງສຸດລາວ ພ້ອມດ້ວຍຕົວແທນຈາກ <strong>FK Sarajevo</strong> (ບອດສະເນຍ ແລະ ເຮີເຊໂກວີນາ) ຈະມາທີ່ຍີ່ປຸ່ນ.<br>ການທົດສອບນີ້ເປີດໂອກາດສູ່ສັນຍາອາຊີບ 2 ເສັ້ນທາງ — ອາຊີຕາເວັນອອກສຽງໃຕ້ ແລະ ຢູໂຣບ."
+      ></p>
       <div class="highlight-box">
-        <p data-ja="ラオス1部リーグ関係者 2名 ＋ FKサラエボ代理人 来日・選考" data-en="2 Lao Premier League Officials + FK Sarajevo Agent — Live Scouting"></p>
+        <p
+          data-ja="ラオス1部リーグ関係者 2名 ＋ FKサラエボ代理人 来日・選考"
+          data-en="2 Lao Premier League Officials + FK Sarajevo Agent — Live Scouting"
+          data-lo="ເຈົ້າໜ້າທີ່ລີກສູງສຸດລາວ 2 ທ່ານ + ຕົວແທນ FK Sarajevo — ຄັດເລືອກໂດຍກົງ"
+        ></p>
       </div>
     </div>
   </section>
@@ -470,49 +499,94 @@
   <section class="details" id="details">
     <div class="container">
       <p class="section-title">DETAILS</p>
-      <p class="section-subtitle" data-ja="開催概要" data-en="Event Overview"></p>
+      <p class="section-subtitle"
+        data-ja="開催概要"
+        data-en="Event Overview"
+        data-lo="ລາຍລະອຽດງານ"
+      ></p>
       <div class="section-line"></div>
       <div class="details-grid">
         <div class="detail-card">
-          <div class="icon">📅</div>
           <h3>Date</h3>
-          <p data-ja="2026年4月3日（金）" data-en="Friday, April 3, 2026"></p>
+          <p
+            data-ja="2026年4月3日（金）"
+            data-en="Friday, April 3, 2026"
+            data-lo="ວັນສຸກ, 3 ເມສາ 2026"
+          ></p>
         </div>
         <div class="detail-card">
-          <div class="icon">⏰</div>
           <h3>Time</h3>
           <p>11:30 〜 16:00</p>
-          <p class="sub" data-ja="受付開始 11:30" data-en="Registration opens at 11:30"></p>
+          <p class="sub"
+            data-ja="受付開始 11:30"
+            data-en="Registration opens at 11:30"
+            data-lo="ເລີ່ມລົງທະບຽນ 11:30"
+          ></p>
         </div>
         <div class="detail-card">
-          <div class="icon">📍</div>
           <h3>Venue</h3>
-          <p data-ja="水元スポーツセンター" data-en="Mizumoto Sports Center"></p>
-          <p class="sub" data-ja="東京都葛飾区" data-en="Katsushika, Tokyo"></p>
+          <p
+            data-ja="水元スポーツセンター"
+            data-en="Mizumoto Sports Center"
+            data-lo="ສູນກິລາ Mizumoto"
+          ></p>
+          <p class="sub"
+            data-ja="東京都葛飾区"
+            data-en="Katsushika, Tokyo"
+            data-lo="Katsushika, ໂຕກຽວ"
+          ></p>
         </div>
         <div class="detail-card">
-          <div class="icon">🎯</div>
           <h3>Target</h3>
-          <p data-ja="18歳 〜 26歳" data-en="Ages 18 – 26"></p>
-          <p class="sub" data-ja="男性・経験者" data-en="Male / Experienced Players"></p>
+          <p
+            data-ja="18歳 〜 26歳"
+            data-en="Ages 18 – 26"
+            data-lo="ອາຍຸ 18 – 26 ປີ"
+          ></p>
+          <p class="sub"
+            data-ja="男性・経験者"
+            data-en="Male / Experienced Players"
+            data-lo="ຊາຍ / ນັກກິລາມີປະສົບການ"
+          ></p>
         </div>
         <div class="detail-card">
-          <div class="icon">🌏</div>
           <h3>Destination</h3>
-          <p data-ja="東南アジア ＆ ヨーロッパ" data-en="Southeast Asia & Europe"></p>
-          <p class="sub" data-ja="ラオス1部 / FKサラエボ（ボスニア）" data-en="Lao Premier League / FK Sarajevo (Bosnia)"></p>
+          <p
+            data-ja="東南アジア ＆ ヨーロッパ"
+            data-en="Southeast Asia &amp; Europe"
+            data-lo="ອາຊີຕາເວັນອອກສຽງໃຕ້ ແລະ ຢູໂຣບ"
+          ></p>
+          <p class="sub"
+            data-ja="ラオス1部 / FKサラエボ（ボスニア）"
+            data-en="Lao Premier League / FK Sarajevo (Bosnia)"
+            data-lo="ລີກສູງສຸດລາວ / FK Sarajevo (ບອດສະເນຍ)"
+          ></p>
         </div>
         <div class="detail-card">
-          <div class="icon">💰</div>
           <h3>Fee</h3>
-          <p data-ja="3,000円" data-en="¥3,000"></p>
-          <p class="sub" data-ja="当日現金払い" data-en="Cash payment on the day"></p>
+          <p
+            data-ja="3,000円"
+            data-en="¥3,000"
+            data-lo="3,000 ເຢັນ"
+          ></p>
+          <p class="sub"
+            data-ja="当日現金払い"
+            data-en="Cash payment on the day"
+            data-lo="ຈ່າຍເງິນສົດໃນມື້ງານ"
+          ></p>
         </div>
         <div class="detail-card">
-          <div class="icon">👥</div>
           <h3>Staff</h3>
-          <p data-ja="ラオス1部リーグ関係者 2名" data-en="2 Lao Premier League Officials"></p>
-          <p class="sub" data-ja="＋ FKサラエボ代理人" data-en="+ FK Sarajevo Agent"></p>
+          <p
+            data-ja="ラオス1部リーグ関係者 2名"
+            data-en="2 Lao Premier League Officials"
+            data-lo="ເຈົ້າໜ້າທີ່ລີກສູງສຸດລາວ 2 ທ່ານ"
+          ></p>
+          <p class="sub"
+            data-ja="＋ FKサラエボ代理人"
+            data-en="+ FK Sarajevo Agent"
+            data-lo="+ ຕົວແທນ FK Sarajevo"
+          ></p>
         </div>
       </div>
     </div>
@@ -522,39 +596,75 @@
   <section class="schedule" id="schedule">
     <div class="container">
       <p class="section-title">SCHEDULE</p>
-      <p class="section-subtitle" data-ja="当日のタイムスケジュール" data-en="Event Timetable"></p>
+      <p class="section-subtitle"
+        data-ja="当日のタイムスケジュール"
+        data-en="Event Timetable"
+        data-lo="ຕາຕະລາງເວລາ"
+      ></p>
       <div class="section-line"></div>
       <div class="timeline">
         <div class="timeline-item">
           <div class="timeline-time">11:30</div>
           <div class="timeline-dot"></div>
           <div class="timeline-content">
-            <h3 data-ja="受付開始" data-en="Registration"></h3>
-            <p data-ja="会場にて受付・参加費のお支払い" data-en="Check-in and fee payment at the venue"></p>
+            <h3
+              data-ja="受付開始"
+              data-en="Registration"
+              data-lo="ລົງທະບຽນ"
+            ></h3>
+            <p
+              data-ja="会場にて受付・参加費のお支払い"
+              data-en="Check-in and fee payment at the venue"
+              data-lo="ລົງທະບຽນ ແລະ ຈ່າຍຄ່າເຂົ້າຮ່ວມທີ່ສະໜາມ"
+            ></p>
           </div>
         </div>
         <div class="timeline-item">
           <div class="timeline-time">12:00</div>
           <div class="timeline-dot"></div>
           <div class="timeline-content">
-            <h3 data-ja="ウォーミングアップ" data-en="Warm-Up"></h3>
-            <p data-ja="全体でのアップ・ストレッチ" data-en="Group warm-up and stretching"></p>
+            <h3
+              data-ja="ウォーミングアップ"
+              data-en="Warm-Up"
+              data-lo="ອົບອຸ່ນຮ່າງກາຍ"
+            ></h3>
+            <p
+              data-ja="全体でのアップ・ストレッチ"
+              data-en="Group warm-up and stretching"
+              data-lo="ອົບອຸ່ນຮ່າງກາຍ ແລະ ຍືດເສັ້ນເປັນກຸ່ມ"
+            ></p>
           </div>
         </div>
         <div class="timeline-item">
           <div class="timeline-time">12:30</div>
           <div class="timeline-dot"></div>
           <div class="timeline-content">
-            <h3 data-ja="ゲーム形式の技術テスト" data-en="Game-Based Skill Assessment"></h3>
-            <p data-ja="実戦形式でのプレー評価" data-en="Performance evaluation in match format"></p>
+            <h3
+              data-ja="ゲーム形式の技術テスト"
+              data-en="Game-Based Skill Assessment"
+              data-lo="ການທົດສອບທັກສະແບບແຂ່ງຂັນ"
+            ></h3>
+            <p
+              data-ja="実戦形式でのプレー評価"
+              data-en="Performance evaluation in match format"
+              data-lo="ປະເມີນການຫຼິ້ນໃນຮູບແບບການແຂ່ງຂັນ"
+            ></p>
           </div>
         </div>
         <div class="timeline-item">
           <div class="timeline-time">15:30</div>
           <div class="timeline-dot"></div>
           <div class="timeline-content">
-            <h3 data-ja="閉会式" data-en="Closing Ceremony"></h3>
-            <p data-ja="結果は後日メールにてご連絡" data-en="Results will be sent via email"></p>
+            <h3
+              data-ja="閉会式"
+              data-en="Closing Ceremony"
+              data-lo="ພິທີປິດ"
+            ></h3>
+            <p
+              data-ja="結果は後日メールにてご連絡"
+              data-en="Results will be sent via email"
+              data-lo="ຜົນຈະແຈ້ງທາງອີເມວພາຍຫຼັງ"
+            ></p>
           </div>
         </div>
       </div>
@@ -565,42 +675,69 @@
   <section class="apply" id="apply">
     <div class="container">
       <p class="section-title">ENTRY</p>
-      <p class="section-subtitle" data-ja="参加申込み" data-en="Registration"></p>
+      <p class="section-subtitle"
+        data-ja="参加申込み"
+        data-en="Registration"
+        data-lo="ລົງທະບຽນເຂົ້າຮ່ວມ"
+      ></p>
       <div class="section-line"></div>
       <div class="apply-box">
-        <p class="apply-lead" data-ja="トライアウトへの参加を希望される方は、<br>下記ボタンより申込みフォームにお進みください。" data-en="To apply for the tryout,<br>please click the button below to access the registration form."></p>
-        <a href="https://form.run/@taqmau-sWv6tqPIdsUisJaRMIvn" target="_blank" rel="noopener" class="btn-primary btn-apply" data-ja="申込みフォームを開く" data-en="Open Registration Form"></a>
-        <p class="apply-note" data-ja="※ 外部サイト（form.run）に移動します" data-en="* You will be redirected to an external site (form.run)"></p>
+        <p class="apply-lead"
+          data-ja="トライアウトへの参加を希望される方は、<br>下記ボタンより申込みフォームにお進みください。"
+          data-en="To apply for the tryout,<br>please click the button below to access the registration form."
+          data-lo="ຖ້າທ່ານຕ້ອງການເຂົ້າຮ່ວມການທົດສອບ,<br>ກະລຸນາກົດປຸ່ມຂ້າງລຸ່ມເພື່ອເປີດແບບຟອມລົງທະບຽນ."
+        ></p>
+        <a href="https://form.run/@taqmau-sWv6tqPIdsUisJaRMIvn" target="_blank" rel="noopener" class="btn-primary btn-apply"
+          data-ja="申込みフォームを開く"
+          data-en="Open Registration Form"
+          data-lo="ເປີດແບບຟອມລົງທະບຽນ"
+        ></a>
+        <p class="apply-note"
+          data-ja="※ 外部サイト（form.run）に移動します"
+          data-en="* You will be redirected to an external site (form.run)"
+          data-lo="* ຈະໄປຍັງເວັບໄຊພາຍນອກ (form.run)"
+        ></p>
       </div>
     </div>
   </section>
 
   <!-- ===== Footer ===== -->
   <footer>
-    <p data-ja="&copy; 2026 海外プロサッカー トライアウト実行委員会. All rights reserved." data-en="&copy; 2026 International Pro Football Tryout Committee. All rights reserved."></p>
+    <p
+      data-ja="&copy; 2026 海外プロサッカー トライアウト実行委員会. All rights reserved."
+      data-en="&copy; 2026 International Pro Football Tryout Committee. All rights reserved."
+      data-lo="&copy; 2026 ຄະນະກຳມະການທົດສອບຟຸດບານອາຊີບສາກົນ. ສະຫງວນລິຂະສິດ."
+    ></p>
   </footer>
 
   <script>
     // Initialize language
     let currentLang = 'ja';
+    const langs = ['ja', 'en', 'lo'];
+    const titles = {
+      ja: '海外プロサッカー トライアウト 2026 | 東南アジア＆ヨーロッパ | 4月3日開催',
+      en: 'International Pro Football Tryout 2026 | Southeast Asia & Europe | April 3',
+      lo: 'ທົດສອບຟຸດບານອາຊີບ 2026 | ອາຊີຕາເວັນອອກສຽງໃຕ້ ແລະ ຢູໂຣບ | 3 ເມສາ'
+    };
 
     function switchLang(lang) {
       currentLang = lang;
       document.documentElement.lang = lang;
 
       // Update toggle buttons
-      document.getElementById('btn-ja').classList.toggle('active', lang === 'ja');
-      document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+      langs.forEach(l => {
+        document.getElementById('btn-' + l).classList.toggle('active', l === lang);
+      });
 
       // Update all translatable elements
-      document.querySelectorAll('[data-ja][data-en]').forEach(el => {
-        el.innerHTML = el.getAttribute('data-' + lang);
+      document.querySelectorAll('[data-' + lang + ']').forEach(el => {
+        if (el.hasAttribute('data-ja') && el.hasAttribute('data-en') && el.hasAttribute('data-lo')) {
+          el.innerHTML = el.getAttribute('data-' + lang);
+        }
       });
 
       // Update page title
-      document.title = lang === 'ja'
-        ? '海外プロサッカー トライアウト 2026 | 東南アジア＆ヨーロッパ | 4月3日開催'
-        : 'International Pro Football Tryout 2026 | Southeast Asia & Europe | April 3';
+      document.title = titles[lang];
     }
 
     // Set initial content
