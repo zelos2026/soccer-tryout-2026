@@ -50,6 +50,18 @@
       line-height: 1.7;
     }
 
+    /* ===== Scroll Progress Bar ===== */
+    .scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-hover));
+      z-index: 999;
+      width: 0%;
+      transition: width 0.05s linear;
+    }
+
     /* ===== Page Loader ===== */
     .page-loader {
       position: fixed;
@@ -137,10 +149,26 @@
       font-weight: 600;
       letter-spacing: 0.05em;
       transition: color 0.3s;
+      position: relative;
     }
 
     .navbar-links a:hover {
       color: var(--accent);
+    }
+
+    .navbar-links a.active {
+      color: var(--accent);
+    }
+
+    .navbar-links a.active::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--accent);
+      border-radius: 1px;
     }
 
     /* ===== Language Toggle ===== */
@@ -216,6 +244,14 @@
       pointer-events: none;
     }
 
+    /* Particle Canvas */
+    .hero-particles {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+    }
+
     .hero-content {
       position: relative;
       z-index: 1;
@@ -263,11 +299,11 @@
 
     .hero-date span { color: var(--accent); }
 
-    /* Countdown */
+    /* Flip Countdown */
     .countdown {
       display: flex;
       justify-content: center;
-      gap: 1.2rem;
+      gap: 1rem;
       margin-bottom: 2.5rem;
     }
 
@@ -275,20 +311,69 @@
       text-align: center;
     }
 
-    .countdown-num {
-      display: block;
-      font-size: clamp(1.8rem, 4vw, 2.5rem);
+    .flip-card {
+      position: relative;
+      width: clamp(52px, 12vw, 72px);
+      height: clamp(52px, 12vw, 72px);
+      perspective: 400px;
+      margin: 0 auto 0.3rem;
+    }
+
+    .flip-card-inner {
+      width: 100%;
+      height: 100%;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .flip-card-inner::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 50%;
+      height: 1px;
+      background: rgba(30, 45, 71, 0.7);
+    }
+
+    .flip-num {
+      font-size: clamp(1.5rem, 4vw, 2.2rem);
       font-weight: 800;
       color: var(--accent);
       line-height: 1;
     }
 
+    .flip-num.changing {
+      animation: flipPulse 0.4s ease;
+    }
+
+    @keyframes flipPulse {
+      0% { transform: scaleY(1); }
+      30% { transform: scaleY(0.85); }
+      60% { transform: scaleY(1.05); }
+      100% { transform: scaleY(1); }
+    }
+
     .countdown-label {
-      font-size: 0.7rem;
+      font-size: 0.65rem;
       color: var(--text-muted);
       text-transform: uppercase;
       letter-spacing: 0.1em;
-      margin-top: 0.3rem;
+    }
+
+    .countdown-sep {
+      font-size: clamp(1.5rem, 4vw, 2.2rem);
+      font-weight: 800;
+      color: var(--accent);
+      align-self: flex-start;
+      margin-top: clamp(12px, 3vw, 18px);
+      opacity: 0.5;
     }
 
     .btn-primary {
@@ -381,6 +466,12 @@
       background: var(--accent);
       margin: 0 auto 3rem;
       border-radius: 2px;
+      transform: scaleX(0);
+      transition: transform 0.6s ease;
+    }
+
+    .section-line.animate {
+      transform: scaleX(1);
     }
 
     /* ===== Scroll Animation ===== */
@@ -498,6 +589,13 @@
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     }
 
+    .detail-icon {
+      width: 32px;
+      height: 32px;
+      margin-bottom: 0.8rem;
+      color: var(--accent);
+    }
+
     .detail-card h3 {
       font-size: 0.85rem;
       color: var(--text-muted);
@@ -533,6 +631,17 @@
       background: var(--card-border);
     }
 
+    .timeline-progress {
+      position: absolute;
+      left: 24px;
+      top: 0;
+      width: 2px;
+      height: 0;
+      background: var(--accent);
+      z-index: 1;
+      transition: height 0.3s ease;
+    }
+
     .timeline-item {
       display: flex;
       gap: 1.5rem;
@@ -545,19 +654,30 @@
       text-align: right;
       font-weight: 700;
       font-size: 0.95rem;
-      color: var(--accent);
+      color: var(--text-muted);
       padding-top: 0.1rem;
+      transition: color 0.3s ease;
+    }
+
+    .timeline-item.active .timeline-time {
+      color: var(--accent);
     }
 
     .timeline-dot {
       width: 12px;
       height: 12px;
-      background: var(--accent);
+      background: var(--card-border);
       border-radius: 50%;
       flex-shrink: 0;
       margin-top: 0.35rem;
       position: relative;
-      z-index: 1;
+      z-index: 2;
+      transition: background 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .timeline-item.active .timeline-dot {
+      background: var(--accent);
+      box-shadow: 0 0 8px rgba(200, 169, 78, 0.4);
     }
 
     .timeline-content h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.2rem; }
@@ -769,10 +889,75 @@
     /* ===== Footer ===== */
     footer {
       text-align: center;
-      padding: 2.5rem 1.5rem;
+      padding: 3rem 1.5rem 2.5rem;
       border-top: 1px solid var(--card-border);
       color: var(--text-muted);
       font-size: 0.85rem;
+    }
+
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .footer-logo {
+      width: 28px;
+      height: 28px;
+    }
+
+    .footer-brand-text {
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--accent);
+      letter-spacing: 0.15em;
+    }
+
+    .footer-tagline {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-bottom: 1.2rem;
+      opacity: 0.7;
+    }
+
+    .footer-social {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-social a {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 1px solid var(--card-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .footer-social a:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .footer-social a svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .footer-divider {
+      width: 40px;
+      height: 1px;
+      background: var(--card-border);
+      margin: 0 auto 1rem;
     }
 
     /* ===== Responsive ===== */
@@ -781,7 +966,8 @@
       .apply-box { padding: 2.5rem 1.5rem; }
       .details-grid { grid-template-columns: 1fr; }
       .timeline-item { gap: 1rem; }
-      .countdown { gap: 0.8rem; }
+      .countdown { gap: 0.6rem; }
+      .countdown-sep { margin: 0 -0.2rem; }
       .lang-toggle { top: 0.8rem; right: 0.8rem; }
       .lang-toggle.with-navbar { top: 3.5rem; }
       .lang-toggle button { padding: 0.4rem 0.7rem; font-size: 0.75rem; }
@@ -805,6 +991,9 @@
 </head>
 <body>
 
+  <!-- ===== Scroll Progress Bar ===== -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+
   <!-- ===== Page Loader ===== -->
   <div class="page-loader" id="pageLoader">
     <div class="loader-icon"></div>
@@ -815,11 +1004,11 @@
   <nav class="navbar" id="navbar">
     <div class="navbar-inner">
       <div class="navbar-brand">TRYOUT 2026</div>
-      <ul class="navbar-links">
-        <li><a href="#about">ABOUT</a></li>
-        <li><a href="#details">DETAILS</a></li>
-        <li><a href="#schedule">SCHEDULE</a></li>
-        <li><a href="#apply">ENTRY</a></li>
+      <ul class="navbar-links" id="navLinks">
+        <li><a href="#about" data-section="about">ABOUT</a></li>
+        <li><a href="#details" data-section="details">DETAILS</a></li>
+        <li><a href="#schedule" data-section="schedule">SCHEDULE</a></li>
+        <li><a href="#apply" data-section="apply">ENTRY</a></li>
       </ul>
     </div>
   </nav>
@@ -833,6 +1022,7 @@
 
   <!-- ===== Hero ===== -->
   <section class="hero" id="hero">
+    <canvas class="hero-particles" id="particleCanvas"></canvas>
     <div class="hero-content">
       <div class="hero-badge">Official Tryout 2026</div>
       <h1
@@ -851,31 +1041,26 @@
         data-lo="ສູນກິລາ Mizumoto"
       ></span></p>
 
-      <!-- Countdown Timer -->
+      <!-- Flip Countdown Timer -->
       <div class="countdown" id="countdown">
         <div class="countdown-item">
-          <span class="countdown-num" id="cd-days">--</span>
-          <span class="countdown-label"
-            data-ja="日" data-en="Days" data-lo="ມື້"
-          ></span>
+          <div class="flip-card"><div class="flip-card-inner"><span class="flip-num" id="cd-days">--</span></div></div>
+          <span class="countdown-label" data-ja="日" data-en="Days" data-lo="ມື້"></span>
         </div>
+        <span class="countdown-sep">:</span>
         <div class="countdown-item">
-          <span class="countdown-num" id="cd-hours">--</span>
-          <span class="countdown-label"
-            data-ja="時間" data-en="Hours" data-lo="ຊົ່ວໂມງ"
-          ></span>
+          <div class="flip-card"><div class="flip-card-inner"><span class="flip-num" id="cd-hours">--</span></div></div>
+          <span class="countdown-label" data-ja="時間" data-en="Hours" data-lo="ຊົ່ວໂມງ"></span>
         </div>
+        <span class="countdown-sep">:</span>
         <div class="countdown-item">
-          <span class="countdown-num" id="cd-mins">--</span>
-          <span class="countdown-label"
-            data-ja="分" data-en="Min" data-lo="ນາທີ"
-          ></span>
+          <div class="flip-card"><div class="flip-card-inner"><span class="flip-num" id="cd-mins">--</span></div></div>
+          <span class="countdown-label" data-ja="分" data-en="Min" data-lo="ນາທີ"></span>
         </div>
+        <span class="countdown-sep">:</span>
         <div class="countdown-item">
-          <span class="countdown-num" id="cd-secs">--</span>
-          <span class="countdown-label"
-            data-ja="秒" data-en="Sec" data-lo="ວິນາທີ"
-          ></span>
+          <div class="flip-card"><div class="flip-card-inner"><span class="flip-num" id="cd-secs">--</span></div></div>
+          <span class="countdown-label" data-ja="秒" data-en="Sec" data-lo="ວິນາທີ"></span>
         </div>
       </div>
 
@@ -975,35 +1160,42 @@
       <div class="section-line"></div>
       <div class="details-grid">
         <div class="detail-card stagger-item">
+          <svg class="detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
           <h3>Date</h3>
           <p data-ja="2026年4月3日（金）" data-en="Friday, April 3, 2026" data-lo="ວັນສຸກ, 3 ເມສາ 2026"></p>
         </div>
         <div class="detail-card stagger-item">
+          <svg class="detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
           <h3>Time</h3>
           <p>11:30 〜 16:00</p>
           <p class="sub" data-ja="受付開始 11:30" data-en="Registration opens at 11:30" data-lo="ເລີ່ມລົງທະບຽນ 11:30"></p>
         </div>
         <div class="detail-card stagger-item">
+          <svg class="detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
           <h3>Venue</h3>
           <p data-ja="水元スポーツセンター" data-en="Mizumoto Sports Center" data-lo="ສູນກິລາ Mizumoto"></p>
           <p class="sub" data-ja="東京都葛飾区" data-en="Katsushika, Tokyo" data-lo="Katsushika, ໂຕກຽວ"></p>
         </div>
         <div class="detail-card stagger-item">
+          <svg class="detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
           <h3>Target</h3>
           <p data-ja="18歳 〜 26歳" data-en="Ages 18 – 26" data-lo="ອາຍຸ 18 – 26 ປີ"></p>
           <p class="sub" data-ja="男性・経験者" data-en="Male / Experienced Players" data-lo="ຊາຍ / ນັກກິລາມີປະສົບການ"></p>
         </div>
         <div class="detail-card stagger-item">
+          <svg class="detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
           <h3>Destination</h3>
           <p data-ja="東南アジア ＆ ヨーロッパ" data-en="Southeast Asia &amp; Europe" data-lo="ອາຊີຕາເວັນອອກສຽງໃຕ້ ແລະ ຢູໂຣບ"></p>
           <p class="sub" data-ja="ラオス1部 / FKサラエボ（ボスニア）" data-en="Lao Premier League / FK Sarajevo (Bosnia)" data-lo="ລີກສູງສຸດລາວ / FK Sarajevo (ບອດສະເນຍ)"></p>
         </div>
         <div class="detail-card stagger-item">
+          <svg class="detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
           <h3>Fee</h3>
           <p data-ja="3,000円" data-en="¥3,000" data-lo="3,000 ເຢັນ"></p>
           <p class="sub" data-ja="当日現金払い" data-en="Cash payment on the day" data-lo="ຈ່າຍເງິນສົດໃນມື້ງານ"></p>
         </div>
         <div class="detail-card stagger-item">
+          <svg class="detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
           <h3>Staff</h3>
           <p data-ja="ラオス1部リーグ関係者 2名" data-en="2 Lao Premier League Officials" data-lo="ເຈົ້າໜ້າທີ່ລີກສູງສຸດລາວ 2 ທ່ານ"></p>
           <p class="sub" data-ja="＋ FKサラエボ代理人" data-en="+ FK Sarajevo Agent" data-lo="+ ຕົວແທນ FK Sarajevo"></p>
@@ -1028,7 +1220,8 @@
         data-ja="当日のタイムスケジュール" data-en="Event Timetable" data-lo="ຕາຕະລາງເວລາ"
       ></p>
       <div class="section-line"></div>
-      <div class="timeline">
+      <div class="timeline" id="timeline">
+        <div class="timeline-progress" id="timelineProgress"></div>
         <div class="timeline-item stagger-item">
           <div class="timeline-time">11:30</div>
           <div class="timeline-dot"></div>
@@ -1167,6 +1360,34 @@
 
   <!-- ===== Footer ===== -->
   <footer>
+    <div class="footer-brand">
+      <svg class="footer-logo" viewBox="0 0 64 64" fill="none">
+        <circle cx="32" cy="32" r="28" stroke="#c8a94e" stroke-width="2"/>
+        <polygon points="32,12 37,22 32,28 27,22" fill="#c8a94e"/>
+        <polygon points="48,25 46,34 39,34 37,27" fill="#c8a94e"/>
+        <polygon points="16,25 18,34 25,34 27,27" fill="#c8a94e"/>
+        <polygon points="22,44 29,40 32,48 25,50" fill="#c8a94e"/>
+        <polygon points="42,44 35,40 32,48 39,50" fill="#c8a94e"/>
+      </svg>
+      <span class="footer-brand-text">ZELOS</span>
+    </div>
+    <p class="footer-tagline"
+      data-ja="海外プロサッカートライアウトプロジェクトチーム"
+      data-en="International Pro Football Tryout Project Team"
+      data-lo="ທີມງານໂຄງການທົດສອບຟຸດບານອາຊີບສາກົນ"
+    ></p>
+    <div class="footer-social">
+      <a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fzelos2026.github.io%2Fsoccer-tryout-2026%2F" target="_blank" rel="noopener" aria-label="X">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+      </a>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fzelos2026.github.io%2Fsoccer-tryout-2026%2F" target="_blank" rel="noopener" aria-label="Facebook">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+      </a>
+      <a href="https://social-plugins.line.me/lineit/share?url=https%3A%2F%2Fzelos2026.github.io%2Fsoccer-tryout-2026%2F" target="_blank" rel="noopener" aria-label="LINE">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+      </a>
+    </div>
+    <div class="footer-divider"></div>
     <p
       data-ja="&copy; 2026 株式会社ZELOS 海外プロサッカートライアウトプロジェクトチーム. All rights reserved."
       data-en="&copy; 2026 ZELOS Inc. International Pro Football Tryout Project Team. All rights reserved."
@@ -1196,6 +1417,52 @@
       }, 600);
     });
 
+    // ===== Particle Background =====
+    (function() {
+      const canvas = document.getElementById('particleCanvas');
+      const ctx = canvas.getContext('2d');
+      let particles = [];
+      const PARTICLE_COUNT = 40;
+
+      function resize() {
+        canvas.width = canvas.offsetWidth;
+        canvas.height = canvas.offsetHeight;
+      }
+      resize();
+      window.addEventListener('resize', resize);
+
+      function createParticle() {
+        return {
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          size: Math.random() * 2.5 + 0.5,
+          speedX: (Math.random() - 0.5) * 0.3,
+          speedY: (Math.random() - 0.5) * 0.3,
+          opacity: Math.random() * 0.4 + 0.1
+        };
+      }
+
+      for (let i = 0; i < PARTICLE_COUNT; i++) {
+        particles.push(createParticle());
+      }
+
+      function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        particles.forEach(p => {
+          p.x += p.speedX;
+          p.y += p.speedY;
+          if (p.x < 0 || p.x > canvas.width) p.speedX *= -1;
+          if (p.y < 0 || p.y > canvas.height) p.speedY *= -1;
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+          ctx.fillStyle = 'rgba(200, 169, 78, ' + p.opacity + ')';
+          ctx.fill();
+        });
+        requestAnimationFrame(animate);
+      }
+      animate();
+    })();
+
     // ===== Language Switch =====
     let currentLang = 'ja';
     const langs = ['ja', 'en', 'lo'];
@@ -1221,8 +1488,9 @@
 
     switchLang('ja');
 
-    // ===== Countdown Timer =====
+    // ===== Flip Countdown Timer =====
     const eventDate = new Date('2026-04-03T11:30:00+09:00').getTime();
+    let prevValues = { days: '', hours: '', mins: '', secs: '' };
 
     function updateCountdown() {
       const now = new Date().getTime();
@@ -1234,28 +1502,45 @@
       }
 
       const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-      const secs = Math.floor((diff % (1000 * 60)) / 1000);
+      const hours = String(Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
+      const mins = String(Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
+      const secs = String(Math.floor((diff % (1000 * 60)) / 1000)).padStart(2, '0');
 
-      document.getElementById('cd-days').textContent = days;
-      document.getElementById('cd-hours').textContent = String(hours).padStart(2, '0');
-      document.getElementById('cd-mins').textContent = String(mins).padStart(2, '0');
-      document.getElementById('cd-secs').textContent = String(secs).padStart(2, '0');
+      const ids = { days: 'cd-days', hours: 'cd-hours', mins: 'cd-mins', secs: 'cd-secs' };
+      const vals = { days: String(days), hours, mins, secs };
+
+      Object.keys(ids).forEach(key => {
+        const el = document.getElementById(ids[key]);
+        if (prevValues[key] !== vals[key]) {
+          el.textContent = vals[key];
+          el.classList.remove('changing');
+          void el.offsetWidth;
+          el.classList.add('changing');
+          prevValues[key] = vals[key];
+        }
+      });
     }
 
     updateCountdown();
     setInterval(updateCountdown, 1000);
 
-    // ===== Navbar & Back to Top & Mobile CTA on scroll =====
+    // ===== Scroll: Navbar, Progress, Back to Top, Mobile CTA, Active Nav, Timeline =====
     const navbar = document.getElementById('navbar');
     const langToggle = document.getElementById('langToggle');
     const backToTop = document.getElementById('backToTop');
     const mobileCta = document.getElementById('mobileCta');
+    const scrollProgress = document.getElementById('scrollProgress');
+    const navLinks = document.querySelectorAll('#navLinks a[data-section]');
+    const sections = ['about', 'details', 'schedule', 'apply'];
 
     window.addEventListener('scroll', () => {
       const heroHeight = document.querySelector('.hero').offsetHeight;
       const scrollY = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+
+      // Scroll Progress Bar
+      const progress = docHeight > 0 ? (scrollY / docHeight) * 100 : 0;
+      scrollProgress.style.width = progress + '%';
 
       // Navbar
       if (scrollY > heroHeight * 0.7) {
@@ -1279,6 +1564,40 @@
       } else {
         mobileCta.classList.remove('visible');
       }
+
+      // Active Nav Link Highlight
+      let currentSection = '';
+      sections.forEach(id => {
+        const sec = document.getElementById(id);
+        if (sec && sec.offsetTop - 200 <= scrollY) {
+          currentSection = id;
+        }
+      });
+      navLinks.forEach(link => {
+        link.classList.toggle('active', link.getAttribute('data-section') === currentSection);
+      });
+
+      // Timeline Progress
+      const timeline = document.getElementById('timeline');
+      if (timeline) {
+        const timelineRect = timeline.getBoundingClientRect();
+        const timelineItems = timeline.querySelectorAll('.timeline-item');
+        const viewMid = window.innerHeight * 0.7;
+
+        if (timelineRect.top < viewMid && timelineRect.bottom > 0) {
+          const progressPx = Math.min(Math.max(viewMid - timelineRect.top, 0), timelineRect.height);
+          document.getElementById('timelineProgress').style.height = progressPx + 'px';
+
+          timelineItems.forEach(item => {
+            const itemRect = item.getBoundingClientRect();
+            if (itemRect.top < viewMid) {
+              item.classList.add('active');
+            } else {
+              item.classList.remove('active');
+            }
+          });
+        }
+      }
     });
 
     // ===== Scroll Animation (fade-in) =====
@@ -1291,6 +1610,17 @@
     }, { threshold: 0.15 });
 
     document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // ===== Section Line Animation =====
+    const lineObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate');
+        }
+      });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('.section-line').forEach(el => lineObserver.observe(el));
 
     // ===== Stagger Animation =====
     const staggerObserver = new IntersectionObserver((entries) => {
