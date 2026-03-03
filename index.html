@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>海外プロサッカー トライアウト 2026 | 東南アジア＆ヨーロッパ | 4月3日開催</title>
 
+  <!-- Favicon (SVG soccer ball) -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><circle cx='32' cy='32' r='30' fill='%230a1628' stroke='%23c8a94e' stroke-width='3'/><polygon points='32,10 38,20 32,26 26,20' fill='%23c8a94e'/><polygon points='50,24 48,34 40,34 38,26' fill='%23c8a94e'/><polygon points='14,24 16,34 24,34 26,26' fill='%23c8a94e'/><polygon points='20,46 28,42 32,50 24,52' fill='%23c8a94e'/><polygon points='44,46 36,42 32,50 40,52' fill='%23c8a94e'/></svg>" type="image/svg+xml">
+
   <!-- OGP Meta Tags -->
   <meta property="og:title" content="海外プロサッカー トライアウト 2026">
   <meta property="og:description" content="ラオス1部リーグ＆FKサラエボ。東南アジアとヨーロッパ、2つのルートで海外プロ契約を目指せるトライアウト。2026年4月3日 水元スポーツセンターにて開催。">
@@ -45,6 +48,46 @@
       background-color: var(--primary);
       color: var(--text);
       line-height: 1.7;
+    }
+
+    /* ===== Page Loader ===== */
+    .page-loader {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 1.5rem;
+      transition: opacity 0.6s ease, visibility 0.6s ease;
+    }
+
+    .page-loader.hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .loader-icon {
+      width: 50px;
+      height: 50px;
+      border: 3px solid var(--card-border);
+      border-top-color: var(--accent);
+      border-radius: 50%;
+      animation: loaderSpin 0.8s linear infinite;
+    }
+
+    .loader-text {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    @keyframes loaderSpin {
+      to { transform: rotate(360deg); }
     }
 
     /* ===== Navbar ===== */
@@ -149,8 +192,18 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      background: linear-gradient(135deg, #0a1628 0%, #0f2240 40%, #162d50 60%, #0a1628 100%);
+      background: linear-gradient(135deg, #0a1628 0%, #0f2240 25%, #162d50 50%, #0f2240 75%, #0a1628 100%);
+      background-size: 400% 400%;
+      animation: heroGradient 12s ease infinite;
       overflow: hidden;
+    }
+
+    @keyframes heroGradient {
+      0% { background-position: 0% 50%; }
+      25% { background-position: 100% 25%; }
+      50% { background-position: 100% 50%; }
+      75% { background-position: 0% 75%; }
+      100% { background-position: 0% 50%; }
     }
 
     .hero::before {
@@ -279,6 +332,27 @@
       60% { transform: translateX(-50%) translateY(-4px); }
     }
 
+    /* ===== Wave Divider ===== */
+    .wave-divider {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      line-height: 0;
+      margin-top: -1px;
+    }
+
+    .wave-divider svg {
+      display: block;
+      width: 100%;
+      height: 60px;
+    }
+
+    .wave-divider.flip {
+      transform: rotate(180deg);
+      margin-top: 0;
+      margin-bottom: -1px;
+    }
+
     /* ===== Section Common ===== */
     section { padding: 5rem 1.5rem; }
 
@@ -321,6 +395,18 @@
       transform: translateY(0);
     }
 
+    /* Stagger Animation for Cards */
+    .stagger-item {
+      opacity: 0;
+      transform: translateY(25px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .stagger-item.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
     /* ===== About Section ===== */
     .about {
       background: linear-gradient(180deg, var(--primary) 0%, #0d1e35 100%);
@@ -350,6 +436,44 @@
       font-weight: 600;
       color: var(--accent);
       text-align: center;
+    }
+
+    /* ===== Stats Section ===== */
+    .stats {
+      background: #0d1e35;
+      padding: 4rem 1.5rem;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .stat-item {
+      text-align: center;
+      padding: 1.5rem 0.5rem;
+    }
+
+    .stat-number {
+      font-size: clamp(2rem, 5vw, 2.8rem);
+      font-weight: 800;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-number .stat-suffix {
+      font-size: 0.6em;
+    }
+
+    .stat-label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-weight: 600;
+      letter-spacing: 0.05em;
     }
 
     /* ===== Details Section ===== */
@@ -603,6 +727,83 @@
     .share-btn.line { background: #06C755; color: #fff; border-color: #06C755; }
     .share-btn.facebook { background: #1877F2; color: #fff; border-color: #1877F2; }
 
+    /* ===== Back to Top Button ===== */
+    .back-to-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      z-index: 90;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: var(--primary);
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(200, 169, 78, 0.3);
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .back-to-top:hover {
+      background: var(--accent-hover);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(200, 169, 78, 0.4);
+    }
+
+    .back-to-top svg {
+      width: 22px;
+      height: 22px;
+    }
+
+    /* ===== Mobile Floating CTA ===== */
+    .mobile-cta {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 95;
+      background: rgba(10, 22, 40, 0.95);
+      backdrop-filter: blur(12px);
+      border-top: 1px solid var(--card-border);
+      padding: 0.8rem 1.2rem;
+      transform: translateY(100%);
+      transition: transform 0.4s ease;
+    }
+
+    .mobile-cta.visible {
+      transform: translateY(0);
+    }
+
+    .mobile-cta a {
+      display: block;
+      background: var(--accent);
+      color: var(--primary);
+      text-align: center;
+      padding: 0.9rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 0.02em;
+    }
+
+    .mobile-cta a:active {
+      background: var(--accent-hover);
+    }
+
     /* ===== Footer ===== */
     footer {
       text-align: center;
@@ -628,10 +829,27 @@
       .navbar-links { gap: 0.8rem; }
       .navbar-links a { font-size: 0.7rem; }
       .navbar-brand { font-size: 0.75rem; }
+
+      .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+      .stat-item { padding: 1rem 0.5rem; }
+
+      .wave-divider svg { height: 35px; }
+
+      .back-to-top { bottom: 5rem; right: 1rem; width: 42px; height: 42px; }
+
+      .mobile-cta { display: block; }
+
+      footer { padding-bottom: 5rem; }
     }
   </style>
 </head>
 <body>
+
+  <!-- ===== Page Loader ===== -->
+  <div class="page-loader" id="pageLoader">
+    <div class="loader-icon"></div>
+    <div class="loader-text">LOADING</div>
+  </div>
 
   <!-- ===== Navbar ===== -->
   <nav class="navbar" id="navbar">
@@ -712,6 +930,14 @@
     </div>
   </section>
 
+  <!-- Wave Divider -->
+  <div class="wave-divider">
+    <svg viewBox="0 0 1200 60" preserveAspectRatio="none">
+      <path d="M0,60 C200,0 400,50 600,25 C800,0 1000,40 1200,10 L1200,60 Z" fill="#0d1e35" opacity="0.5"/>
+      <path d="M0,60 C300,20 500,55 700,30 C900,5 1100,45 1200,20 L1200,60 Z" fill="#0d1e35"/>
+    </svg>
+  </div>
+
   <!-- ===== About ===== -->
   <section class="about" id="about">
     <div class="container fade-in">
@@ -735,6 +961,50 @@
     </div>
   </section>
 
+  <!-- ===== Stats Section ===== -->
+  <section class="stats" id="stats">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item fade-in">
+          <div class="stat-number"><span class="stat-count" data-target="2">0</span><span class="stat-suffix"
+            data-ja="ヵ国" data-en=" Continents" data-lo=" ທະວີບ"
+          ></span></div>
+          <div class="stat-label"
+            data-ja="東南アジア＆ヨーロッパ" data-en="Asia & Europe" data-lo="ອາຊີ ແລະ ຢູໂຣບ"
+          ></div>
+        </div>
+        <div class="stat-item fade-in">
+          <div class="stat-number"><span class="stat-count" data-target="3">0</span><span class="stat-suffix"
+            data-ja="名" data-en=" Scouts" data-lo=" ຄົນ"
+          ></span></div>
+          <div class="stat-label"
+            data-ja="海外スカウト来日" data-en="International Scouts" data-lo="ນັກສະກາວສາກົນ"
+          ></div>
+        </div>
+        <div class="stat-item fade-in">
+          <div class="stat-number">¥<span class="stat-count" data-target="3000">0</span></div>
+          <div class="stat-label"
+            data-ja="参加費" data-en="Entry Fee" data-lo="ຄ່າເຂົ້າຮ່ວມ"
+          ></div>
+        </div>
+        <div class="stat-item fade-in">
+          <div class="stat-number"><span class="stat-count" data-target="18">0</span><span class="stat-suffix">-26</span></div>
+          <div class="stat-label"
+            data-ja="対象年齢" data-en="Age Range" data-lo="ຊ່ວງອາຍຸ"
+          ></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Wave Divider -->
+  <div class="wave-divider">
+    <svg viewBox="0 0 1200 60" preserveAspectRatio="none">
+      <path d="M0,0 C200,50 400,10 600,35 C800,60 1000,15 1200,45 L1200,60 L0,60 Z" fill="#0d1e35" opacity="0.5"/>
+      <path d="M0,0 C300,45 500,5 700,30 C900,55 1100,10 1200,40 L1200,60 L0,60 Z" fill="#0d1e35"/>
+    </svg>
+  </div>
+
   <!-- ===== Details ===== -->
   <section class="details" id="details">
     <div class="container fade-in">
@@ -744,36 +1014,36 @@
       ></p>
       <div class="section-line"></div>
       <div class="details-grid">
-        <div class="detail-card">
+        <div class="detail-card stagger-item">
           <h3>Date</h3>
           <p data-ja="2026年4月3日（金）" data-en="Friday, April 3, 2026" data-lo="ວັນສຸກ, 3 ເມສາ 2026"></p>
         </div>
-        <div class="detail-card">
+        <div class="detail-card stagger-item">
           <h3>Time</h3>
           <p>11:30 〜 16:00</p>
           <p class="sub" data-ja="受付開始 11:30" data-en="Registration opens at 11:30" data-lo="ເລີ່ມລົງທະບຽນ 11:30"></p>
         </div>
-        <div class="detail-card">
+        <div class="detail-card stagger-item">
           <h3>Venue</h3>
           <p data-ja="水元スポーツセンター" data-en="Mizumoto Sports Center" data-lo="ສູນກິລາ Mizumoto"></p>
           <p class="sub" data-ja="東京都葛飾区" data-en="Katsushika, Tokyo" data-lo="Katsushika, ໂຕກຽວ"></p>
         </div>
-        <div class="detail-card">
+        <div class="detail-card stagger-item">
           <h3>Target</h3>
           <p data-ja="18歳 〜 26歳" data-en="Ages 18 – 26" data-lo="ອາຍຸ 18 – 26 ປີ"></p>
           <p class="sub" data-ja="男性・経験者" data-en="Male / Experienced Players" data-lo="ຊາຍ / ນັກກິລາມີປະສົບການ"></p>
         </div>
-        <div class="detail-card">
+        <div class="detail-card stagger-item">
           <h3>Destination</h3>
           <p data-ja="東南アジア ＆ ヨーロッパ" data-en="Southeast Asia &amp; Europe" data-lo="ອາຊີຕາເວັນອອກສຽງໃຕ້ ແລະ ຢູໂຣບ"></p>
           <p class="sub" data-ja="ラオス1部 / FKサラエボ（ボスニア）" data-en="Lao Premier League / FK Sarajevo (Bosnia)" data-lo="ລີກສູງສຸດລາວ / FK Sarajevo (ບອດສະເນຍ)"></p>
         </div>
-        <div class="detail-card">
+        <div class="detail-card stagger-item">
           <h3>Fee</h3>
           <p data-ja="3,000円" data-en="¥3,000" data-lo="3,000 ເຢັນ"></p>
           <p class="sub" data-ja="当日現金払い" data-en="Cash payment on the day" data-lo="ຈ່າຍເງິນສົດໃນມື້ງານ"></p>
         </div>
-        <div class="detail-card">
+        <div class="detail-card stagger-item">
           <h3>Staff</h3>
           <p data-ja="ラオス1部リーグ関係者 2名" data-en="2 Lao Premier League Officials" data-lo="ເຈົ້າໜ້າທີ່ລີກສູງສຸດລາວ 2 ທ່ານ"></p>
           <p class="sub" data-ja="＋ FKサラエボ代理人" data-en="+ FK Sarajevo Agent" data-lo="+ ຕົວແທນ FK Sarajevo"></p>
@@ -781,6 +1051,14 @@
       </div>
     </div>
   </section>
+
+  <!-- Wave Divider -->
+  <div class="wave-divider">
+    <svg viewBox="0 0 1200 60" preserveAspectRatio="none">
+      <path d="M0,60 C200,0 400,50 600,25 C800,0 1000,40 1200,10 L1200,60 Z" fill="var(--primary)" opacity="0.5"/>
+      <path d="M0,60 C300,20 500,55 700,30 C900,5 1100,45 1200,20 L1200,60 Z" fill="var(--primary)"/>
+    </svg>
+  </div>
 
   <!-- ===== Schedule ===== -->
   <section class="schedule" id="schedule">
@@ -791,7 +1069,7 @@
       ></p>
       <div class="section-line"></div>
       <div class="timeline">
-        <div class="timeline-item">
+        <div class="timeline-item stagger-item">
           <div class="timeline-time">11:30</div>
           <div class="timeline-dot"></div>
           <div class="timeline-content">
@@ -799,7 +1077,7 @@
             <p data-ja="会場にて受付・参加費のお支払い" data-en="Check-in and fee payment at the venue" data-lo="ລົງທະບຽນ ແລະ ຈ່າຍຄ່າເຂົ້າຮ່ວມທີ່ສະໜາມ"></p>
           </div>
         </div>
-        <div class="timeline-item">
+        <div class="timeline-item stagger-item">
           <div class="timeline-time">12:00</div>
           <div class="timeline-dot"></div>
           <div class="timeline-content">
@@ -807,7 +1085,7 @@
             <p data-ja="全体でのアップ・ストレッチ" data-en="Group warm-up and stretching" data-lo="ອົບອຸ່ນຮ່າງກາຍ ແລະ ຍືດເສັ້ນເປັນກຸ່ມ"></p>
           </div>
         </div>
-        <div class="timeline-item">
+        <div class="timeline-item stagger-item">
           <div class="timeline-time">12:30</div>
           <div class="timeline-dot"></div>
           <div class="timeline-content">
@@ -815,7 +1093,7 @@
             <p data-ja="実戦形式でのプレー評価" data-en="Performance evaluation in match format" data-lo="ປະເມີນການຫຼິ້ນໃນຮູບແບບການແຂ່ງຂັນ"></p>
           </div>
         </div>
-        <div class="timeline-item">
+        <div class="timeline-item stagger-item">
           <div class="timeline-time">15:30</div>
           <div class="timeline-dot"></div>
           <div class="timeline-content">
@@ -827,6 +1105,14 @@
     </div>
   </section>
 
+  <!-- Wave Divider -->
+  <div class="wave-divider">
+    <svg viewBox="0 0 1200 60" preserveAspectRatio="none">
+      <path d="M0,0 C200,50 400,10 600,35 C800,60 1000,15 1200,45 L1200,60 L0,60 Z" fill="var(--primary)" opacity="0.5"/>
+      <path d="M0,0 C300,45 500,5 700,30 C900,55 1100,10 1200,40 L1200,60 L0,60 Z" fill="var(--primary)"/>
+    </svg>
+  </div>
+
   <!-- ===== Bring ===== -->
   <section class="bring" id="bring">
     <div class="container fade-in">
@@ -836,15 +1122,23 @@
       ></p>
       <div class="section-line"></div>
       <div class="bring-grid">
-        <div class="bring-item" data-ja="サッカースパイク" data-en="Football Boots" data-lo="ເກີບຟຸດບານ"></div>
-        <div class="bring-item" data-ja="すね当て" data-en="Shin Guards" data-lo="ສະໜັບແຂ້ງ"></div>
-        <div class="bring-item" data-ja="運動着（上下）" data-en="Sportswear" data-lo="ຊຸດກິລາ"></div>
-        <div class="bring-item" data-ja="飲み物" data-en="Drinks" data-lo="ເຄື່ອງດື່ມ"></div>
-        <div class="bring-item" data-ja="タオル" data-en="Towel" data-lo="ຜ້າເຊັດໂຕ"></div>
-        <div class="bring-item" data-ja="着替え" data-en="Change of Clothes" data-lo="ເຄື່ອງປ່ຽນ"></div>
+        <div class="bring-item stagger-item" data-ja="サッカースパイク" data-en="Football Boots" data-lo="ເກີບຟຸດບານ"></div>
+        <div class="bring-item stagger-item" data-ja="すね当て" data-en="Shin Guards" data-lo="ສະໜັບແຂ້ງ"></div>
+        <div class="bring-item stagger-item" data-ja="運動着（上下）" data-en="Sportswear" data-lo="ຊຸດກິລາ"></div>
+        <div class="bring-item stagger-item" data-ja="飲み物" data-en="Drinks" data-lo="ເຄື່ອງດື່ມ"></div>
+        <div class="bring-item stagger-item" data-ja="タオル" data-en="Towel" data-lo="ຜ້າເຊັດໂຕ"></div>
+        <div class="bring-item stagger-item" data-ja="着替え" data-en="Change of Clothes" data-lo="ເຄື່ອງປ່ຽນ"></div>
       </div>
     </div>
   </section>
+
+  <!-- Wave Divider -->
+  <div class="wave-divider">
+    <svg viewBox="0 0 1200 60" preserveAspectRatio="none">
+      <path d="M0,60 C200,0 400,50 600,25 C800,0 1000,40 1200,10 L1200,60 Z" fill="#0d1e35" opacity="0.5"/>
+      <path d="M0,60 C300,20 500,55 700,30 C900,5 1100,45 1200,20 L1200,60 Z" fill="#0d1e35"/>
+    </svg>
+  </div>
 
   <!-- ===== Map ===== -->
   <section class="map-section" id="map">
@@ -864,6 +1158,14 @@
       </div>
     </div>
   </section>
+
+  <!-- Wave Divider -->
+  <div class="wave-divider">
+    <svg viewBox="0 0 1200 60" preserveAspectRatio="none">
+      <path d="M0,0 C200,50 400,10 600,35 C800,60 1000,15 1200,45 L1200,60 L0,60 Z" fill="#0d1e35" opacity="0.5"/>
+      <path d="M0,0 C300,45 500,5 700,30 C900,55 1100,10 1200,40 L1200,60 L0,60 Z" fill="#0d1e35"/>
+    </svg>
+  </div>
 
   <!-- ===== FAQ ===== -->
   <section class="faq" id="faq">
@@ -904,6 +1206,14 @@
       </div>
     </div>
   </section>
+
+  <!-- Wave Divider -->
+  <div class="wave-divider">
+    <svg viewBox="0 0 1200 60" preserveAspectRatio="none">
+      <path d="M0,60 C200,0 400,50 600,25 C800,0 1000,40 1200,10 L1200,60 Z" fill="var(--primary)" opacity="0.5"/>
+      <path d="M0,60 C300,20 500,55 700,30 C900,5 1100,45 1200,20 L1200,60 Z" fill="var(--primary)"/>
+    </svg>
+  </div>
 
   <!-- ===== Apply ===== -->
   <section class="apply" id="apply">
@@ -958,7 +1268,28 @@
     ></p>
   </footer>
 
+  <!-- ===== Back to Top Button ===== -->
+  <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="18 15 12 9 6 15"></polyline>
+    </svg>
+  </button>
+
+  <!-- ===== Mobile Floating CTA ===== -->
+  <div class="mobile-cta" id="mobileCta">
+    <a href="https://form.run/@taqmau-sWv6tqPIdsUisJaRMIvn" target="_blank" rel="noopener"
+      data-ja="参加申込みはこちら" data-en="Apply Now" data-lo="ສະໝັກດຽວນີ້"
+    ></a>
+  </div>
+
   <script>
+    // ===== Page Loader =====
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.getElementById('pageLoader').classList.add('hidden');
+      }, 600);
+    });
+
     // ===== Language Switch =====
     let currentLang = 'ja';
     const langs = ['ja', 'en', 'lo'];
@@ -1010,23 +1341,41 @@
     updateCountdown();
     setInterval(updateCountdown, 1000);
 
-    // ===== Navbar show on scroll =====
+    // ===== Navbar & Back to Top & Mobile CTA on scroll =====
     const navbar = document.getElementById('navbar');
     const langToggle = document.getElementById('langToggle');
-    let lastScroll = 0;
+    const backToTop = document.getElementById('backToTop');
+    const mobileCta = document.getElementById('mobileCta');
 
     window.addEventListener('scroll', () => {
       const heroHeight = document.querySelector('.hero').offsetHeight;
-      if (window.scrollY > heroHeight * 0.7) {
+      const scrollY = window.scrollY;
+
+      // Navbar
+      if (scrollY > heroHeight * 0.7) {
         navbar.classList.add('visible');
         langToggle.classList.add('with-navbar');
       } else {
         navbar.classList.remove('visible');
         langToggle.classList.remove('with-navbar');
       }
+
+      // Back to Top button
+      if (scrollY > 600) {
+        backToTop.classList.add('visible');
+      } else {
+        backToTop.classList.remove('visible');
+      }
+
+      // Mobile CTA
+      if (scrollY > heroHeight && scrollY < document.body.scrollHeight - window.innerHeight - 200) {
+        mobileCta.classList.add('visible');
+      } else {
+        mobileCta.classList.remove('visible');
+      }
     });
 
-    // ===== Scroll Animation =====
+    // ===== Scroll Animation (fade-in) =====
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -1036,6 +1385,63 @@
     }, { threshold: 0.15 });
 
     document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // ===== Stagger Animation =====
+    const staggerObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const parent = entry.target.closest('.details-grid, .timeline, .bring-grid');
+          if (parent) {
+            const items = parent.querySelectorAll('.stagger-item');
+            items.forEach((item, i) => {
+              setTimeout(() => {
+                item.classList.add('visible');
+              }, i * 100);
+            });
+          }
+          staggerObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    // Observe only the first stagger-item in each group
+    document.querySelectorAll('.details-grid, .timeline, .bring-grid').forEach(group => {
+      const first = group.querySelector('.stagger-item');
+      if (first) staggerObserver.observe(first);
+    });
+
+    // ===== Stats Counter Animation =====
+    const statsObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const counters = entry.target.querySelectorAll('.stat-count');
+          counters.forEach(counter => {
+            const target = parseInt(counter.getAttribute('data-target'));
+            const duration = 1500;
+            const startTime = performance.now();
+
+            function animate(currentTime) {
+              const elapsed = currentTime - startTime;
+              const progress = Math.min(elapsed / duration, 1);
+              const eased = 1 - Math.pow(1 - progress, 3);
+              const current = Math.floor(eased * target);
+              counter.textContent = target >= 1000 ? current.toLocaleString() : current;
+              if (progress < 1) {
+                requestAnimationFrame(animate);
+              } else {
+                counter.textContent = target >= 1000 ? target.toLocaleString() : target;
+              }
+            }
+
+            requestAnimationFrame(animate);
+          });
+          statsObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+
+    const statsGrid = document.querySelector('.stats-grid');
+    if (statsGrid) statsObserver.observe(statsGrid);
 
     // ===== FAQ Toggle =====
     function toggleFaq(btn) {
