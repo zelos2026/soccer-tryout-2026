@@ -41,6 +41,30 @@
 
     html {
       scroll-behavior: smooth;
+      scroll-padding-top: 60px;
+    }
+
+    /* ===== Custom Scrollbar ===== */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--primary);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--card-border);
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--accent);
+    }
+
+    * {
+      scrollbar-width: thin;
+      scrollbar-color: var(--card-border) var(--primary);
     }
 
     body {
@@ -259,6 +283,18 @@
       max-width: 800px;
     }
 
+    /* Hero Staggered Entrance */
+    .hero-content .hero-entrance {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .hero-content .hero-entrance.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
     .hero-badge {
       display: inline-block;
       background: rgba(200, 169, 78, 0.15);
@@ -367,6 +403,16 @@
       letter-spacing: 0.1em;
     }
 
+    .countdown-ended {
+      font-size: clamp(1.2rem, 3vw, 1.6rem);
+      font-weight: 800;
+      color: var(--accent);
+      text-align: center;
+      margin-bottom: 2.5rem;
+      animation: pulseGlow 2.5s ease-in-out infinite;
+      padding: 1rem;
+    }
+
     .countdown-sep {
       font-size: clamp(1.5rem, 4vw, 2.2rem);
       font-weight: 800;
@@ -395,6 +441,15 @@
       background: var(--accent-hover);
       transform: translateY(-2px);
       box-shadow: 0 8px 25px rgba(200, 169, 78, 0.25);
+    }
+
+    .btn-primary.pulse-glow {
+      animation: pulseGlow 2.5s ease-in-out infinite;
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% { box-shadow: 0 0 5px rgba(200, 169, 78, 0.2); }
+      50% { box-shadow: 0 0 25px rgba(200, 169, 78, 0.5), 0 0 50px rgba(200, 169, 78, 0.15); }
     }
 
     .scroll-indicator {
@@ -581,12 +636,30 @@
       border: 1px solid var(--card-border);
       border-radius: 12px;
       padding: 2rem;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+      position: relative;
+      overflow: hidden;
     }
 
     .detail-card:hover {
       transform: translateY(-3px);
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      border-color: rgba(200, 169, 78, 0.4);
+    }
+
+    .detail-card::before {
+      content: '';
+      position: absolute;
+      inset: -1px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, rgba(200, 169, 78, 0) 0%, rgba(200, 169, 78, 0) 100%);
+      z-index: -1;
+      transition: background 0.3s ease;
+      pointer-events: none;
+    }
+
+    .detail-card:hover::before {
+      background: linear-gradient(135deg, rgba(200, 169, 78, 0.15) 0%, rgba(200, 169, 78, 0.05) 100%);
     }
 
     .detail-icon {
@@ -930,6 +1003,24 @@
     }
 
     /* ===== Responsive ===== */
+    @media (max-width: 768px) {
+      .hero h1 { font-size: clamp(1.8rem, 5vw, 2.8rem); }
+      .hero-subtitle { font-size: clamp(0.9rem, 2.2vw, 1.1rem); }
+      .hero-date { font-size: clamp(1rem, 2.5vw, 1.3rem); }
+      .countdown { gap: 0.8rem; }
+      .flip-card { width: clamp(48px, 11vw, 64px); height: clamp(48px, 11vw, 64px); }
+      .flip-num { font-size: clamp(1.3rem, 3.5vw, 1.8rem); }
+      .section-title { font-size: 1.5rem; }
+      .details-grid { grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+      .detail-card { padding: 1.5rem; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 1.2rem; }
+      .apply-box { padding: 2.5rem 1.8rem; }
+      .navbar-links { gap: 1rem; }
+      .navbar-links a { font-size: 0.75rem; }
+      .share-buttons { gap: 0.8rem; }
+      .share-btn { padding: 0.6rem 1.2rem; font-size: 0.8rem; }
+    }
+
     @media (max-width: 600px) {
       section { padding: 3.5rem 1.2rem; }
       .apply-box { padding: 2.5rem 1.5rem; }
@@ -993,25 +1084,25 @@
   <section class="hero" id="hero">
     <canvas class="hero-particles" id="particleCanvas"></canvas>
     <div class="hero-content">
-      <div class="hero-badge">Official Tryout 2026</div>
-      <h1
+      <div class="hero-badge hero-entrance">Official Tryout 2026</div>
+      <h1 class="hero-entrance"
         data-ja="海外プロサッカー<br><span class='gold'>トライアウト</span>"
         data-en="Pro Football<br><span class='gold'>Tryout</span>"
         data-lo="ທົດສອບຟຸດບານ<br><span class='gold'>ອາຊີບ</span>"
       ></h1>
-      <p class="hero-subtitle"
+      <p class="hero-subtitle hero-entrance"
         data-ja="東南アジア＆ヨーロッパ。2つの大陸への扉が、ここで開く。<br>サッカーを愛する学生たちに新たなる選択肢を"
         data-en="Southeast Asia &amp; Europe. The door to two continents opens here.<br>A new path for students who love football"
         data-lo="ອາຊີຕາເວັນອອກສຽງໃຕ້ ແລະ ຢູໂຣບ. ປະຕູສູ່ 2 ທະວີບ ເປີດຢູ່ບ່ອນນີ້.<br>ທາງເລືອກໃໝ່ສຳລັບນັກສຶກສາທີ່ຮັກຟຸດບານ"
       ></p>
-      <p class="hero-date"><span>2026.4.3</span> FRI ／ <span
+      <p class="hero-date hero-entrance"><span>2026.4.3</span> FRI ／ <span
         data-ja="水元スポーツセンター"
         data-en="Mizumoto Sports Center"
         data-lo="ສູນກິລາ Mizumoto"
       ></span></p>
 
       <!-- Flip Countdown Timer -->
-      <div class="countdown" id="countdown">
+      <div class="countdown hero-entrance" id="countdown">
         <div class="countdown-item">
           <div class="flip-card"><div class="flip-card-inner"><span class="flip-num" id="cd-days">--</span></div></div>
           <span class="countdown-label" data-ja="日" data-en="Days" data-lo="ມື້"></span>
@@ -1033,7 +1124,7 @@
         </div>
       </div>
 
-      <a href="https://form.run/@taqmau-sWv6tqPIdsUisJaRMIvn" target="_blank" rel="noopener" class="btn-primary"
+      <a href="https://form.run/@taqmau-sWv6tqPIdsUisJaRMIvn" target="_blank" rel="noopener" class="btn-primary pulse-glow hero-entrance"
         data-ja="参加申込みはこちら" data-en="Apply Now" data-lo="ສະໝັກດຽວນີ້"
       ></a>
     </div>
@@ -1372,6 +1463,11 @@
     window.addEventListener('load', () => {
       setTimeout(() => {
         document.getElementById('pageLoader').classList.add('hidden');
+        // Staggered hero entrance animation
+        const heroItems = document.querySelectorAll('.hero-entrance');
+        heroItems.forEach((el, i) => {
+          setTimeout(() => el.classList.add('show'), 150 * i);
+        });
       }, 600);
     });
 
@@ -1455,7 +1551,9 @@
       const diff = eventDate - now;
 
       if (diff <= 0) {
-        document.getElementById('countdown').style.display = 'none';
+        const cdEl = document.getElementById('countdown');
+        const endedMsgs = { ja: 'トライアウト開催中！', en: 'Tryout is LIVE!', lo: 'ການທົດສອບກຳລັງດຳເນີນ!' };
+        cdEl.innerHTML = '<div class="countdown-ended" data-ja="' + endedMsgs.ja + '" data-en="' + endedMsgs.en + '" data-lo="' + endedMsgs.lo + '">' + endedMsgs[currentLang] + '</div>';
         return;
       }
 
@@ -1637,10 +1735,15 @@
     const statsGrid = document.querySelector('.stats-grid');
     if (statsGrid) statsObserver.observe(statsGrid);
 
-    // ===== FAQ Toggle =====
+    // ===== FAQ Toggle (Exclusive Accordion) =====
     function toggleFaq(btn) {
       const item = btn.closest('.faq-item');
-      item.classList.toggle('open');
+      const isOpen = item.classList.contains('open');
+      // Close all other FAQ items
+      document.querySelectorAll('.faq-item.open').forEach(openItem => {
+        if (openItem !== item) openItem.classList.remove('open');
+      });
+      item.classList.toggle('open', !isOpen);
     }
   </script>
 
