@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>海外プロサッカー トライアウト 2026 チラシ</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;900&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    @page {
+      size: A4;
+      margin: 0;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Noto Sans JP', 'Inter', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+      background: #e8e8e8;
+      display: flex;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .flyer {
+      width: 210mm;
+      height: 297mm;
+      background: #ffffff;
+      color: #2a2a2a;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.12);
+    }
+
+    @media print {
+      body {
+        background: none;
+        padding: 0;
+      }
+      .flyer {
+        box-shadow: none;
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    /* ===== Background Decorations ===== */
+    .flyer::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      right: -100px;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(26, 54, 93, 0.04) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .flyer::after {
+      content: '';
+      position: absolute;
+      bottom: -80px;
+      left: -80px;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(26, 54, 93, 0.03) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    /* ===== Header / Top Banner ===== */
+    .header {
+      background: linear-gradient(135deg, #1a365d 0%, #234681 50%, #1a365d 100%);
+      padding: 22px 32px 18px;
+      position: relative;
+      border-bottom: 3px solid #c8a94e;
+      color: #ffffff;
+    }
+
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.15);
+      border: 1.5px solid rgba(200, 169, 78, 0.6);
+      color: #c8a94e;
+      padding: 4px 14px;
+      border-radius: 50px;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .org-name {
+      font-size: 8.5px;
+      color: rgba(255, 255, 255, 0.7);
+      letter-spacing: 0.08em;
+    }
+
+    .header h1 {
+      font-size: 32px;
+      font-weight: 900;
+      line-height: 1.15;
+      letter-spacing: 0.02em;
+      margin-bottom: 5px;
+      color: #ffffff;
+    }
+
+    .header h1 .gold {
+      color: #c8a94e;
+    }
+
+    .header .subtitle {
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.8);
+      line-height: 1.6;
+      font-weight: 500;
+    }
+
+    .header .subtitle strong {
+      color: #c8a94e;
+    }
+
+    /* ===== Date & Venue Bar ===== */
+    .date-bar {
+      background: #c8a94e;
+      color: #1a365d;
+      padding: 12px 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .date-bar .date-main {
+      font-size: 26px;
+      font-weight: 900;
+      letter-spacing: 0.03em;
+      font-family: 'Inter', 'Noto Sans JP', sans-serif;
+    }
+
+    .date-bar .date-main .day {
+      font-size: 16px;
+      font-weight: 700;
+      margin-left: 6px;
+    }
+
+    .date-bar .venue-info {
+      text-align: right;
+    }
+
+    .date-bar .venue-name {
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .date-bar .venue-sub {
+      font-size: 10px;
+      font-weight: 500;
+      opacity: 0.7;
+    }
+
+    /* ===== Content Area ===== */
+    .content {
+      padding: 16px 32px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ===== About Section ===== */
+    .about-section {
+      margin-bottom: 14px;
+      text-align: center;
+    }
+
+    .about-section .lead {
+      font-size: 11.5px;
+      color: #5a6577;
+      line-height: 1.7;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    .about-section .lead strong {
+      color: #1a365d;
+      font-weight: 700;
+    }
+
+    /* ===== Highlight Box ===== */
+    .highlight {
+      background: #f6f8fb;
+      border: 1px solid #e2e8f0;
+      border-left: 4px solid #c8a94e;
+      border-radius: 0 8px 8px 0;
+      padding: 10px 18px;
+      margin-bottom: 16px;
+      text-align: center;
+    }
+
+    .highlight p {
+      font-size: 13px;
+      font-weight: 700;
+      color: #1a365d;
+      letter-spacing: 0.03em;
+    }
+
+    /* ===== Stats Row ===== */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .stat-box {
+      background: #f6f8fb;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 10px 8px;
+      text-align: center;
+    }
+
+    .stat-box .stat-num {
+      font-size: 22px;
+      font-weight: 900;
+      color: #1a365d;
+      line-height: 1.1;
+      font-family: 'Inter', 'Noto Sans JP', sans-serif;
+    }
+
+    .stat-box .stat-num .stat-unit {
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .stat-box .stat-lbl {
+      font-size: 8.5px;
+      color: #7a8599;
+      font-weight: 500;
+      margin-top: 3px;
+      letter-spacing: 0.03em;
+    }
+
+    /* ===== Details Grid ===== */
+    .details-section {
+      margin-bottom: 14px;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .section-head h2 {
+      font-size: 15px;
+      font-weight: 700;
+      color: #1a365d;
+      letter-spacing: 0.1em;
+      font-family: 'Inter', 'Noto Sans JP', sans-serif;
+    }
+
+    .section-head .line {
+      flex: 1;
+      height: 1px;
+      background: #e2e8f0;
+    }
+
+    .details-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .detail-item {
+      background: #f6f8fb;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 9px 12px;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .detail-item .detail-icon-wrap {
+      width: 28px;
+      height: 28px;
+      background: rgba(26, 54, 93, 0.08);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .detail-item .detail-icon-wrap svg {
+      width: 15px;
+      height: 15px;
+      stroke: #1a365d;
+      fill: none;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .detail-item .detail-label {
+      font-size: 8px;
+      color: #7a8599;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 600;
+      margin-bottom: 1px;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .detail-item .detail-value {
+      font-size: 12.5px;
+      font-weight: 700;
+      line-height: 1.3;
+      color: #2a2a2a;
+    }
+
+    .detail-item .detail-sub {
+      font-size: 9.5px;
+      color: #7a8599;
+      font-weight: 400;
+      margin-top: 1px;
+    }
+
+    /* ===== Schedule ===== */
+    .schedule-section {
+      margin-bottom: 14px;
+    }
+
+    .schedule-flow {
+      display: flex;
+      align-items: stretch;
+      gap: 0;
+      position: relative;
+    }
+
+    .schedule-step {
+      flex: 1;
+      text-align: center;
+      padding: 10px 6px;
+      background: #f6f8fb;
+      border: 1px solid #e2e8f0;
+      position: relative;
+    }
+
+    .schedule-step:first-child {
+      border-radius: 10px 0 0 10px;
+    }
+
+    .schedule-step:last-child {
+      border-radius: 0 10px 10px 0;
+    }
+
+    .schedule-step:not(:last-child)::after {
+      content: '▶';
+      position: absolute;
+      right: -8px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #c8a94e;
+      font-size: 10px;
+      z-index: 2;
+    }
+
+    .schedule-step .step-time {
+      font-size: 14px;
+      font-weight: 800;
+      color: #1a365d;
+      margin-bottom: 3px;
+      font-family: 'Inter', 'Noto Sans JP', sans-serif;
+    }
+
+    .schedule-step .step-title {
+      font-size: 10px;
+      font-weight: 700;
+      line-height: 1.3;
+      color: #2a2a2a;
+    }
+
+    .schedule-step .step-desc {
+      font-size: 8px;
+      color: #7a8599;
+      margin-top: 2px;
+      line-height: 1.3;
+    }
+
+    /* ===== Bottom CTA Area ===== */
+    .cta-area {
+      background: linear-gradient(135deg, #1a365d 0%, #234681 100%);
+      border: 2px solid #c8a94e;
+      border-radius: 12px;
+      padding: 16px 22px;
+      display: flex;
+      align-items: center;
+      gap: 25px;
+      color: #ffffff;
+    }
+
+    .cta-left {
+      flex: 1;
+    }
+
+    .cta-left h3 {
+      font-size: 16px;
+      font-weight: 900;
+      margin-bottom: 5px;
+      color: #c8a94e;
+    }
+
+    .cta-left .cta-text {
+      font-size: 10.5px;
+      color: rgba(255, 255, 255, 0.8);
+      line-height: 1.6;
+      margin-bottom: 6px;
+    }
+
+    .cta-left .cta-url {
+      font-size: 8.5px;
+      color: rgba(255, 255, 255, 0.5);
+      word-break: break-all;
+    }
+
+    .cta-right {
+      text-align: center;
+      flex-shrink: 0;
+    }
+
+    .qr-wrap {
+      background: #ffffff;
+      padding: 8px;
+      border-radius: 8px;
+      display: inline-block;
+      margin-bottom: 6px;
+    }
+
+    .qr-wrap img {
+      display: block;
+      width: 100px;
+      height: 100px;
+    }
+
+    .qr-label {
+      font-size: 9px;
+      font-weight: 700;
+      color: #c8a94e;
+      letter-spacing: 0.05em;
+    }
+
+    /* ===== Footer ===== */
+    .flyer-footer {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 10px 32px;
+      border-top: 1px solid #e2e8f0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #ffffff;
+    }
+
+    .footer-left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .footer-logo {
+      width: 22px;
+      height: 22px;
+    }
+
+    .footer-brand-name {
+      font-size: 11px;
+      font-weight: 700;
+      color: #1a365d;
+      letter-spacing: 0.15em;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .footer-copy {
+      font-size: 7.5px;
+      color: #7a8599;
+      opacity: 0.6;
+    }
+
+    /* ===== Decorative Elements ===== */
+    .deco-line {
+      position: absolute;
+      top: 0;
+      right: 35px;
+      width: 3px;
+      height: 100%;
+      background: linear-gradient(180deg, #c8a94e 0%, rgba(200,169,78,0.05) 40%, rgba(200,169,78,0) 100%);
+      opacity: 0.12;
+      z-index: 0;
+    }
+
+    .deco-corner-tl {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      width: 30px;
+      height: 30px;
+      border-top: 2px solid rgba(26, 54, 93, 0.1);
+      border-left: 2px solid rgba(26, 54, 93, 0.1);
+      z-index: 0;
+    }
+
+    .deco-corner-br {
+      position: absolute;
+      bottom: 15px;
+      right: 15px;
+      width: 30px;
+      height: 30px;
+      border-bottom: 2px solid rgba(26, 54, 93, 0.1);
+      border-right: 2px solid rgba(26, 54, 93, 0.1);
+      z-index: 0;
+    }
+
+    /* ===== Notes ===== */
+    .notes {
+      margin-top: 10px;
+      padding: 8px 14px;
+      background: #f9fafb;
+      border-radius: 8px;
+      border: 1px solid #e2e8f0;
+    }
+
+    .notes p {
+      font-size: 8.5px;
+      color: #7a8599;
+      line-height: 1.7;
+    }
+
+    .notes p + p {
+      margin-top: 2px;
+    }
+  </style>
+</head>
+<body>
+  <div class="flyer">
+    <!-- Decorative Elements -->
+    <div class="deco-line"></div>
+    <div class="deco-corner-tl"></div>
+    <div class="deco-corner-br"></div>
+
+    <!-- ===== Header ===== -->
+    <div class="header">
+      <div class="header-top">
+        <span class="badge">Official Tryout 2026</span>
+        <span class="org-name">主催：株式会社ZELOS</span>
+      </div>
+      <h1>海外プロサッカー<br><span class="gold">トライアウト</span></h1>
+      <p class="subtitle">東南アジア＆ヨーロッパ。<strong>2つの大陸への扉</strong>が、ここで開く。<br>サッカーを愛する学生たちに新たなる選択肢を</p>
+    </div>
+
+    <!-- ===== Date & Venue Bar ===== -->
+    <div class="date-bar">
+      <div>
+        <span class="date-main">2026.4.3<span class="day">（金）</span></span>
+      </div>
+      <div class="venue-info">
+        <div class="venue-name">水元スポーツセンター</div>
+        <div class="venue-sub">東京都葛飾区 ／ 11:30〜16:00</div>
+      </div>
+    </div>
+
+    <!-- ===== Content ===== -->
+    <div class="content">
+
+      <!-- About -->
+      <div class="about-section">
+        <p class="lead">
+          ラオス1部リーグのクラブ関係者2名に加え、<br>
+          <strong>欧州サッカー関係者</strong>が来日。<br>
+          東南アジアとヨーロッパ、2つのルートで海外プロ契約を目指せるトライアウトです。
+        </p>
+      </div>
+
+      <!-- Highlight -->
+      <div class="highlight">
+        <p>ラオス1部リーグ関係者 2名 ＋ 欧州サッカー関係者　来日・選考</p>
+      </div>
+
+      <!-- Stats -->
+      <div class="stats-row">
+        <div class="stat-box">
+          <div class="stat-num">2<span class="stat-unit">ヵ国</span></div>
+          <div class="stat-lbl">東南アジア＆ヨーロッパ</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">3<span class="stat-unit">名</span></div>
+          <div class="stat-lbl">海外スカウト来日</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">¥3,000</div>
+          <div class="stat-lbl">参加費</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">18<span class="stat-unit">-26歳</span></div>
+          <div class="stat-lbl">対象年齢</div>
+        </div>
+      </div>
+
+      <!-- Details -->
+      <div class="details-section">
+        <div class="section-head">
+          <h2>DETAILS</h2>
+          <div class="line"></div>
+        </div>
+        <div class="details-grid">
+          <div class="detail-item">
+            <div class="detail-icon-wrap">
+              <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            </div>
+            <div>
+              <div class="detail-label">Date</div>
+              <div class="detail-value">2026年4月3日（金）</div>
+            </div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-icon-wrap">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div>
+              <div class="detail-label">Time</div>
+              <div class="detail-value">11:30 〜 16:00</div>
+              <div class="detail-sub">受付開始 11:30</div>
+            </div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-icon-wrap">
+              <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <div class="detail-label">Venue</div>
+              <div class="detail-value">水元スポーツセンター</div>
+              <div class="detail-sub">東京都葛飾区</div>
+            </div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-icon-wrap">
+              <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <div>
+              <div class="detail-label">Target</div>
+              <div class="detail-value">18歳 〜 26歳</div>
+              <div class="detail-sub">海外プロリーグでのプレーを目指す選手</div>
+            </div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-icon-wrap">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            </div>
+            <div>
+              <div class="detail-label">Destination</div>
+              <div class="detail-value">アジア ＆ ヨーロッパ</div>
+              <div class="detail-sub">ラオス / フィリピン / モンゴル / ネパール / カンボジア / タイ / 台湾 / ヨーロッパ</div>
+            </div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-icon-wrap">
+              <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            </div>
+            <div>
+              <div class="detail-label">Fee</div>
+              <div class="detail-value">3,000円</div>
+              <div class="detail-sub">当日現金払い</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Schedule -->
+      <div class="schedule-section">
+        <div class="section-head">
+          <h2>SCHEDULE</h2>
+          <div class="line"></div>
+        </div>
+        <div class="schedule-flow">
+          <div class="schedule-step">
+            <div class="step-time">11:30</div>
+            <div class="step-title">受付開始</div>
+            <div class="step-desc">受付・参加費支払い</div>
+          </div>
+          <div class="schedule-step">
+            <div class="step-time">12:00</div>
+            <div class="step-title">ウォーミング<br>アップ</div>
+            <div class="step-desc">全体アップ</div>
+          </div>
+          <div class="schedule-step">
+            <div class="step-time">12:30</div>
+            <div class="step-title">ゲーム形式<br>技術テスト</div>
+            <div class="step-desc">実戦形式プレー評価</div>
+          </div>
+          <div class="schedule-step">
+            <div class="step-time">15:30</div>
+            <div class="step-title">閉会式</div>
+            <div class="step-desc">結果は後日メール</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA with QR Code -->
+      <div class="cta-area">
+        <div class="cta-left">
+          <h3>参加申込みはこちら ▶</h3>
+          <p class="cta-text">
+            右のQRコードをスマートフォンで読み取るか、<br>
+            下記URLから申込みフォームにアクセスしてください。
+          </p>
+          <p class="cta-url">https://form.run/@taqmau-sWv6tqPIdsUisJaRMIvn</p>
+        </div>
+        <div class="cta-right">
+          <div class="qr-wrap">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=https%3A%2F%2Fform.run%2F%40taqmau-sWv6tqPIdsUisJaRMIvn&color=1a365d&bgcolor=ffffff" alt="申込みフォーム QRコード">
+          </div>
+          <div class="qr-label">▲ 申込みフォーム</div>
+        </div>
+      </div>
+
+      <!-- Notes -->
+      <div class="notes">
+        <p>※ 参加費は当日、会場にて現金でお支払いください。</p>
+        <p>※ 前日までのキャンセルは無料。当日キャンセル・無断欠席の場合は料金をお支払いいただきます。</p>
+        <p>※ 雨天の場合も基本的に開催。荒天中止の際は前日までにメールでご連絡いたします。</p>
+      </div>
+
+    </div>
+
+    <!-- ===== Footer ===== -->
+    <div class="flyer-footer">
+      <div class="footer-left">
+        <svg class="footer-logo" viewBox="0 0 64 64" fill="none">
+          <circle cx="32" cy="32" r="28" stroke="#1a365d" stroke-width="2.5"/>
+          <polygon points="32,12 37,22 32,28 27,22" fill="#1a365d"/>
+          <polygon points="48,25 46,34 39,34 37,27" fill="#1a365d"/>
+          <polygon points="16,25 18,34 25,34 27,27" fill="#1a365d"/>
+          <polygon points="22,44 29,40 32,48 25,50" fill="#1a365d"/>
+          <polygon points="42,44 35,40 32,48 39,50" fill="#1a365d"/>
+        </svg>
+        <span class="footer-brand-name">ZELOS</span>
+      </div>
+      <span class="footer-copy">&copy; 2026 株式会社ZELOS  All rights reserved.</span>
+    </div>
+
+  </div>
+</body>
+</html>

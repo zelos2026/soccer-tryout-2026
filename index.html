@@ -847,6 +847,98 @@
       opacity: 0.7;
     }
 
+    /* ===== Flyer Download ===== */
+    .flyer-download {
+      background: #0a1628;
+      padding: 5rem 1.5rem;
+    }
+
+    .flyer-download-box {
+      max-width: 480px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .flyer-preview {
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+      margin-bottom: 2rem;
+      border: 1px solid var(--card-border);
+      transition: transform 0.3s ease;
+    }
+
+    .flyer-preview:hover {
+      transform: scale(1.02);
+    }
+
+    .flyer-preview img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .flyer-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .btn-download {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.9rem 2rem;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      letter-spacing: 0.02em;
+    }
+
+    .btn-download svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .btn-download .file-size {
+      font-size: 0.75rem;
+      opacity: 0.7;
+      font-weight: 400;
+    }
+
+    .btn-download-jpg {
+      background: var(--accent);
+      color: #000;
+    }
+
+    .btn-download-jpg:hover {
+      background: #ffcc00;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(255,187,0,0.3);
+    }
+
+    .btn-download-pdf {
+      background: transparent;
+      color: var(--accent);
+      border: 2px solid var(--accent);
+    }
+
+    .btn-download-pdf:hover {
+      background: var(--accent);
+      color: #000;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(255,187,0,0.3);
+    }
+
+    .flyer-note {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      opacity: 0.7;
+    }
+
     /* ===== SNS Share ===== */
     .share-section {
       background: #0d1e35;
@@ -1395,6 +1487,39 @@
           data-ja="※ 外部サイト（form.run）に移動します"
           data-en="* You will be redirected to an external site (form.run)"
           data-lo="* ຈະໄປຍັງເວັບໄຊພາຍນອກ (form.run)"
+        ></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Flyer Download ===== -->
+  <section class="flyer-download" id="flyer">
+    <div class="container fade-in">
+      <p class="section-title">FLYER</p>
+      <p class="section-subtitle"
+        data-ja="チラシをダウンロード" data-en="Download Flyer" data-lo="ດາວໂຫຼດໃບປິວ"
+      ></p>
+      <div class="section-line"></div>
+      <div class="flyer-download-box">
+        <div class="flyer-preview">
+          <img src="flyer.jpg" alt="トライアウト チラシ" loading="lazy">
+        </div>
+        <div class="flyer-buttons">
+          <a href="flyer.jpg" download="tryout-flyer-2026.jpg" class="btn-download btn-download-jpg">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            <span>JPG</span>
+            <span class="file-size">470KB</span>
+          </a>
+          <a href="flyer.pdf" download="tryout-flyer-2026.pdf" class="btn-download btn-download-pdf">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            <span>PDF</span>
+            <span class="file-size">900KB</span>
+          </a>
+        </div>
+        <p class="flyer-note"
+          data-ja="※ 印刷用にはPDF、SNS共有にはJPGがおすすめです"
+          data-en="* PDF recommended for printing, JPG for social media sharing"
+          data-lo="* PDF ແນະນຳສຳລັບການພິມ, JPG ສຳລັບການແບ່ງປັນໃນ SNS"
         ></p>
       </div>
     </div>
