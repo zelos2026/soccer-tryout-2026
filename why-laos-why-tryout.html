@@ -25,18 +25,12 @@
     html { scroll-behavior: smooth; }
 
     body {
-      background: var(--black);
+      background-color: #080808 !important;
       color: var(--white);
       font-family: 'Noto Sans JP', sans-serif;
       font-weight: 300;
       overflow-x: hidden;
       line-height: 1.75;
-    }
-
-    body::after {
-      content:''; position:fixed; inset:0;
-      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
-      pointer-events:none; z-index:999;
     }
 
     /* NAV */
@@ -57,8 +51,8 @@
     @media(max-width:700px){ .nav-links{display:none;} nav{padding:16px 20px;} }
 
     /* HERO */
-    .hero { position:relative; min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:100px 24px 80px; overflow:hidden; }
-    .hero-grid { position:absolute; inset:0; background-image: linear-gradient(rgba(0,230,118,.045) 1px,transparent 1px), linear-gradient(90deg,rgba(0,230,118,.045) 1px,transparent 1px); background-size:70px 70px; mask-image:radial-gradient(ellipse 70% 70% at 50% 40%,black 20%,transparent 75%); }
+    .hero { position:relative; min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:100px 24px 80px; overflow:hidden; background:#080808; }
+    .hero-grid { position:absolute; inset:0; background-image: linear-gradient(rgba(0,230,118,.045) 1px,transparent 1px), linear-gradient(90deg,rgba(0,230,118,.045) 1px,transparent 1px); background-size:70px 70px; opacity:0.5; }
     .hero-glow { position:absolute; inset:0; background:radial-gradient(ellipse 70% 55% at 50% 35%,rgba(0,230,118,.11) 0%,transparent 70%); }
     .hero-kicker { font-family:'Rajdhani',sans-serif; font-size:.72rem; font-weight:700; letter-spacing:.38em; color:var(--green); text-transform:uppercase; margin-bottom:28px; opacity:0; animation:fadeUp .7s .2s ease forwards; }
     .hero h1 { font-family:'Bebas Neue',sans-serif; font-size:clamp(3.2rem,11vw,9rem); line-height:.9; letter-spacing:.025em; opacity:0; animation:fadeUp .8s .4s ease forwards; }
@@ -75,7 +69,7 @@
     /* SHARED */
     .full-divider { width:100%; height:1px; background:linear-gradient(90deg,transparent,var(--border),transparent); }
     .wrap { max-width:1080px; margin:0 auto; padding:0 28px; }
-    section { position:relative; z-index:1; padding:112px 28px; }
+    section { position:relative; z-index:1; padding:112px 28px; background:#080808; }
     .s-tag { font-family:'Rajdhani',sans-serif; font-size:.68rem; font-weight:700; letter-spacing:.4em; text-transform:uppercase; color:var(--green); margin-bottom:14px; }
     .s-title { font-family:'Bebas Neue',sans-serif; font-size:clamp(2.8rem,7vw,5.8rem); line-height:.95; letter-spacing:.025em; margin-bottom:56px; }
     .s-title em { color:var(--green); font-style:normal; }
@@ -84,7 +78,7 @@
     .d1{transition-delay:.1s;} .d2{transition-delay:.2s;} .d3{transition-delay:.3s;} .d4{transition-delay:.4s;}
 
     /* FOUNDER STRIP */
-    .founder-strip { background:linear-gradient(135deg,rgba(0,230,118,.09) 0%,rgba(0,200,83,.03) 100%); border-top:1px solid var(--border); border-bottom:1px solid var(--border); padding:72px 28px; text-align:center; }
+    .founder-strip { background:linear-gradient(135deg,rgba(0,230,118,.09) 0%,rgba(0,200,83,.03) 100%), #080808; border-top:1px solid var(--border); border-bottom:1px solid var(--border); padding:72px 28px; text-align:center; }
     .founder-strip blockquote { max-width:780px; margin:0 auto; font-size:clamp(1.15rem,2.4vw,1.65rem); font-weight:700; line-height:1.65; color:var(--white); }
     .founder-strip blockquote em { color:var(--green); font-style:normal; }
     .founder-strip cite { display:block; margin-top:28px; font-family:'Rajdhani',sans-serif; font-size:.8rem; font-weight:700; letter-spacing:.2em; color:var(--muted); text-transform:uppercase; }
@@ -134,7 +128,7 @@
     @media(max-width:680px){ .benefits-grid{grid-template-columns:1fr;} }
     .b-cell { background:var(--card); padding:32px 28px; display:flex; gap:18px; align-items:flex-start; border:1px solid rgba(255,255,255,.04); transition:border-color .3s; }
     .b-cell:hover { border-color:var(--border); }
-    .b-icon { width:42px; height:42px; flex-shrink:0; background:var(--green-faint); border:1px solid var(--border); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:1.1rem; margin-top:2px; }
+    .b-icon { width:42px; height:42px; flex-shrink:0; background:var(--green-faint); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; font-family:'Bebas Neue',sans-serif; font-size:1.2rem; color:var(--green); letter-spacing:.05em; margin-top:2px; }
     .b-title { font-size:.95rem; font-weight:700; margin-bottom:6px; }
     .b-desc { font-size:.84rem; color:rgba(240,240,240,.6); line-height:1.7; }
 
@@ -164,7 +158,7 @@
     .fs-text em { color:var(--green); font-style:normal; }
 
     /* CTA */
-    .cta-section { text-align:center; padding:120px 28px; position:relative; overflow:hidden; }
+    .cta-section { text-align:center; padding:120px 28px; position:relative; overflow:hidden; background:#080808; }
     .cta-section::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 60% 55% at 50% 50%,rgba(0,230,118,.09) 0%,transparent 70%); pointer-events:none; }
     .cta-sub { font-size:1rem; color:var(--muted); margin-bottom:48px; max-width:420px; margin-left:auto; margin-right:auto; line-height:1.8; }
     .btn-main { display:inline-block; background:var(--green); color:#000; font-family:'Rajdhani',sans-serif; font-weight:700; font-size:1rem; letter-spacing:.18em; text-transform:uppercase; padding:20px 60px; text-decoration:none; clip-path:polygon(10px 0%,100% 0%,calc(100% - 10px) 100%,0% 100%); transition:background .2s,transform .2s,box-shadow .2s; }
@@ -286,11 +280,11 @@
       <p class="tb-sub">ラオスリーグのクラブに所属することで、以下の国際大会に出場できる可能性がある。</p>
       <div class="cups-row">
         <div class="cup-item">
-          <div class="cup-name">🏆 ACLチャレンジリーグ</div>
+          <div class="cup-name">ACLチャレンジリーグ</div>
           <p class="cup-desc">アジアチャンピオンズリーグの下部大会。アジア全土のクラブと対戦する国際舞台。スカウトの目に触れる絶好のアピールの場。</p>
         </div>
         <div class="cup-item">
-          <div class="cup-name">🛍️ Shopeeカップ</div>
+          <div class="cup-name">Shopeeカップ</div>
           <p class="cup-desc">東南アジア最大級のカップ戦。地域内での知名度向上と、より大きなマーケットへのアピールが同時にできる。</p>
         </div>
       </div>
@@ -316,12 +310,12 @@
     <div class="paths-wrap">
       <div class="path-card reveal d1">
         <div class="path-label">PATH A — 東南アジア</div>
-        <div class="path-heading">🌏 ラオスリーグで経験を積み、近隣の大マーケットへ</div>
+        <div class="path-heading">ラオスリーグで経験を積み、近隣の大マーケットへ</div>
         <p class="path-body">合格後はラオスのプロクラブと契約し、5〜6月に渡航。リーグ戦・国際大会で実績を積みながら、タイ・ベトナム・インドネシアなどへのステップアップを狙う。生活面はクラブが支援。サッカーだけに集中できる環境で次のキャリアを構築する。</p>
       </div>
       <div class="path-card reveal d2">
         <div class="path-label">PATH B — ヨーロッパ</div>
-        <div class="path-heading">🌍 ヨーロッパの指導者・代理人に直接評価される</div>
+        <div class="path-heading">ヨーロッパの指導者・代理人に直接評価される</div>
         <p class="path-body">当日はヨーロッパの指導者または代理人が参加予定（確定次第公開）。スカウト評価が高ければ、ヨーロッパクラブへのトライアルに直結する可能性もある。日本にいながらヨーロッパの目に触れられる機会は、通常ありえない。</p>
       </div>
     </div>
@@ -330,42 +324,42 @@
     <p class="s-tag reveal" style="margin-bottom:20px;">このトライアウトを選ぶ理由</p>
     <div class="benefits-grid">
       <div class="b-cell reveal d1">
-        <div class="b-icon">⚽</div>
+        <div class="b-icon">01</div>
         <div>
           <div class="b-title">クラブ関係者が「直接来日」して評価する</div>
           <p class="b-desc">ラオスリーグの優勝クラブからクラブマネージャーが来日し、その場で選手を見て獲得を判断する。映像審査ではなく、ライブで評価される場だ。</p>
         </div>
       </div>
       <div class="b-cell reveal d2">
-        <div class="b-icon">🤝</div>
+        <div class="b-icon">02</div>
         <div>
           <div class="b-title">契約交渉まで一気通貫でサポート</div>
           <p class="b-desc">合格後のクラブ交渉・ビザ手配・現地生活のサポートまで、ZELOSが伴走する。渡航先で「一人になる」心配はない。</p>
         </div>
       </div>
       <div class="b-cell reveal d1">
-        <div class="b-icon">🌐</div>
+        <div class="b-icon">03</div>
         <div>
           <div class="b-title">Jリーグ未経験でも、大学・社会人でも参加可</div>
           <p class="b-desc">日本でチャンスをつかめなかった選手が対象。経歴は関係ない。ピッチで見せられるなら、それで十分だ。</p>
         </div>
       </div>
       <div class="b-cell reveal d2">
-        <div class="b-icon">🗣️</div>
+        <div class="b-icon">04</div>
         <div>
           <div class="b-title">言語の不安はサポートが解消</div>
           <p class="b-desc">簡単な英語があれば現地生活の助けになるが、必須ではない。現地スタッフが生活面をサポートする。ピッチの上の言葉は世界共通だ。</p>
         </div>
       </div>
       <div class="b-cell reveal d1">
-        <div class="b-icon">💰</div>
+        <div class="b-icon">05</div>
         <div>
           <div class="b-title">「サッカーだけで生活できる環境」が手に入る</div>
           <p class="b-desc">ラオスリーグの給与は大きくはないが、サッカーだけで生活できる環境に身を置くことが、次のステップアップへの土台になる。</p>
         </div>
       </div>
       <div class="b-cell reveal d2">
-        <div class="b-icon">🚀</div>
+        <div class="b-icon">06</div>
         <div>
           <div class="b-title">費用は「国内参加費」のみ</div>
           <p class="b-desc">会場は東京都葛飾区。渡航費・宿泊費はかからない。合格後の海外渡航費・滞在費はクラブとの契約内容に準ずる。</p>
