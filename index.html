@@ -1167,9 +1167,8 @@
 
   <!-- ===== Language Toggle ===== -->
   <div class="lang-toggle" id="langToggle">
-    <button id="btn-ja" class="active" onclick="switchLang('ja')">JP</button>
+   <button id="btn-ja" class="active" onclick="switchLang('ja')">JP</button>
     <button id="btn-en" onclick="switchLang('en')">EN</button>
-    <button id="btn-lo" onclick="switchLang('lo')">LO</button>
   </div>
 
   <!-- ===== Hero ===== -->
@@ -1823,11 +1822,10 @@
 
     // ===== Language Switch =====
     let currentLang = 'ja';
-    const langs = ['ja', 'en', 'lo'];
+    const langs = ['ja', 'en'];
     const titles = {
       ja: '海外プロサッカー トライアウト 2026 | 東南アジア＆ヨーロッパ | 4月3日開催',
-      en: 'International Pro Football Tryout 2026 | Southeast Asia & Europe | April 3',
-      lo: 'ທົດສອບຟຸດບານອາຊີບ 2026 | ອາຊີຕາເວັນອອກສຽງໃຕ້ ແລະ ຢູໂຣບ | 3 ເມສາ'
+      en: 'International Pro Football Tryout 2026 | Southeast Asia & Europe | April 3'
     };
 
     function switchLang(lang) {
@@ -1837,7 +1835,7 @@
         document.getElementById('btn-' + l).classList.toggle('active', l === lang);
       });
       document.querySelectorAll('[data-' + lang + ']').forEach(el => {
-        if (el.hasAttribute('data-ja') && el.hasAttribute('data-en') && el.hasAttribute('data-lo')) {
+        if (el.hasAttribute('data-ja') && el.hasAttribute('data-en')) {
           el.innerHTML = el.getAttribute('data-' + lang);
         }
       });
