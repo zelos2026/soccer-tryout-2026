@@ -1139,7 +1139,53 @@
 
       footer { padding-bottom: 5rem; }
     }
-  </style>
+  
+  /* ===== Notice Banner ===== */
+  .notice-banner {
+    background: linear-gradient(135deg, #1a2a4a 0%, #0d1e35 100%);
+    border-top: 3px solid #c9a84c;
+    border-bottom: 3px solid #c9a84c;
+    padding: 32px 0;
+  }
+  .notice-inner {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    background: rgba(201,168,76,0.08);
+    border: 1px solid rgba(201,168,76,0.4);
+    border-radius: 12px;
+    padding: 28px 32px;
+  }
+  .notice-icon {
+    font-size: 2rem;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .notice-body {
+    flex: 1;
+  }
+  .notice-title {
+    color: #c9a84c;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    line-height: 1.5;
+  }
+  .notice-text {
+    color: #cccccc;
+    font-size: 0.95rem;
+    line-height: 1.8;
+  }
+  @media (max-width: 600px) {
+    .notice-inner {
+      flex-direction: column;
+      padding: 20px;
+    }
+    .notice-title { font-size: 1rem; }
+    .notice-text { font-size: 0.9rem; }
+  }
+
+</style>
 </head>
 <body>
 
@@ -1233,6 +1279,19 @@
       <path d="M0,60 C300,20 500,55 700,30 C900,5 1100,45 1200,20 L1200,60 Z" fill="#0d1e35"/>
     </svg>
   </div>
+
+  <!-- ===== Notice Banner ===== -->
+  <section class="notice-banner">
+    <div class="container">
+      <div class="notice-inner">
+        <div class="notice-icon">📢</div>
+        <div class="notice-body">
+          <p class="notice-title" data-ja="【重要なお知らせ】Nermin Cengic 氏 来日中止について" data-en="[Important Notice] Regarding Nermin Cengic's Visit Cancellation"></p>
+          <p class="notice-text" data-ja="現在の世界情勢を考慮し、安全を最優先に考えた結果、今回の来日を断念する決断をいたしました。参加選手の皆さんには大変申し訳なく思っております。しかしながら、このトライアルで見出した選手については、Nermin Cengic 氏と連携し、欧州でのチャレンジに結びつけられるよう全力でサポートいたします。夢を持って挑んでください。" data-en="Due to the current global situation and with safety as our top priority, Nermin Cengic has regrettably decided not to visit Japan this time. We sincerely apologize to all participating players. However, for players we identify through this trial, we will work closely with Nermin Cengic to fully support their path to challenging themselves in Europe. Please pursue your dreams with confidence."></p>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- ===== About ===== -->
   <section class="about" id="about">
